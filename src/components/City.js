@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import CityList from "./CityList";
+import CityInfo from "./CityInfo";
 
 class City extends Component {
   render() {
@@ -7,10 +9,10 @@ class City extends Component {
         <div className="container">
           <section className="row">
             <article className="col-sm-4">
-              <h2>City List will be here</h2>
+              <CityList />
             </article>
             <article className="col-sm-4">
-              <h2>City info will be here</h2>
+              <CityInfo />
             </article>
           </section>
         </div>
