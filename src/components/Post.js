@@ -9,7 +9,7 @@ class Post extends Component {
       user: "",
       text: ""
     };
-    this.deleteComment = this.deletePost.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
   deletePost(e) {
     e.preventDefault();
@@ -21,7 +21,7 @@ class Post extends Component {
   render() {
     return (
       <div>
-        <h3 post />
+        <h3 post goes here />
         <a href="#" onClick={this.deleteComment}>
           delete
         </a>

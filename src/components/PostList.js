@@ -3,7 +3,11 @@ import Post from "./Post";
 
 class PostList extends Component {
   render() {
-    return <post />;
+    return (
+      <div>
+        <post />
+      </div>
+    );
   }
 }
 

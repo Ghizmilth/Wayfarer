@@ -23,7 +23,9 @@ class PostBox extends Component {
     return (
       <div>
         <div className="post-box">
-          <h3>Post components will be here</h3>
+          <h3>
+            <PostList />
+          </h3>
           <button type="submit" value="Add Post">
             Add Post
           </button>
