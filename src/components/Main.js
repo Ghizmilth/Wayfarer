@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-//import Header from './Header'
+import Header from "./Header";
+import City from "./City";
 
 class Main extends Component {
   render() {
-    return <div className="MainPage">This is a test</div>;
+    return (
+      <div className="MainPage">
+        <Header />
+        <City />
+      </div>
+    );
   }
 }
-
-// test
 
 export default Main;
