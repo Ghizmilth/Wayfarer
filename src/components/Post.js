@@ -17,10 +17,17 @@ class Post extends Component {
     this.props.onPostDelete(id);
     console.log("oops deleted");
   }
+
   render() {
-    return(
-
-
+    return (
+      <div>
+        <h3 post />
+        <a href="#" onClick={this.deleteComment}>
+          delete
+        </a>
+      </div>
     );
   }
 }
+
+export default Post;
