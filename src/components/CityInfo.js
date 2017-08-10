@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "../CityInfo.css";
+import PostBox from "./PostBox";
 
 class CityInfo extends Component {
   render() {
@@ -7,14 +9,23 @@ class CityInfo extends Component {
         <div className="container">
           <section className="row">
             <article className="col-sm-6">
-              <h2>City name will be here</h2>
+              <h2>San Francisco</h2>
             </article>
             <article className="col-sm-6">
-              <h2>City Image will be here</h2>
+              <div className="image-space">
+                <img
+                  src={
+                    "https://www.homeadvisor.com/images/consumer/hhi/hero-photos/city/SanFrancisco.jpg"
+                  }
+                  alt="Oops"
+                  height="80%"
+                  width="80%"
+                />
+              </div>
             </article>
           </section>
         </div>
-        <h4>Post component goes here</h4>
+        <PostBox />
       </div>
     );
   }
