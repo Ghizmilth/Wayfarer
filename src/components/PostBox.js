@@ -28,13 +28,11 @@ handleSubmit(e) {
     let newPost = post.concat(e);
     this.setState({data: newPost});
     console.log(this.props.url);
-    fetch(this.props.url, {
-    method: 'post',
-    body: e})
+    axios.post(this.props.url, e)
       .then(res => {
         console.log("RES:" , res);
-        this.setState({ data: res });
-
+        //this.setState({ data: res });
+        //handleAddPost(res);
       })
       .catch(err => {
         console.error("OOPSIES", err);
@@ -42,10 +40,8 @@ handleSubmit(e) {
 }
 
 
-
   handlePostDelete(id) {
-    axios
-      .delete(`${this.props.url}/${id}`)
+    axios.delete(`${this.props.url}/${id}`)
       .then(res => {
         console.log("Post Deleted");
       })
@@ -62,7 +58,7 @@ handleSubmit(e) {
     return (
       <div>
         <div >
-          <h2 >Comments:</h2>
+          <h2 >Comment:</h2>
         <PostList
           onPostDelete={ this.handlePostDelete }
           data={ this.state.data } />

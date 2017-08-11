@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
+
 import $ from "jquery-ajax";
 import { Link } from "react-router";
 import { browserHistory } from "react-router";
@@ -43,6 +44,7 @@ class Main extends Component {
         console.log("oops!");
         console.log(err);
       }
+
     );
   }
   handleLogout() {
