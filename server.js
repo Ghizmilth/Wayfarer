@@ -5,11 +5,11 @@ var express = require('express'),
   db = require('./models');
 
 //create instances
-var app = express(),
+let app = express(),
   router = express.Router();
 
 // set port to env or 3000
-var port = process.env.API_PORT || 3001;
+let port = process.env.API_PORT || 3001;
 
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
