@@ -32,6 +32,7 @@ handleTextChange(e) {
 
 handleSubmit(e) {
   e.preventDefault();
+  this.hideModal();
   let title = this.state.title.trim();
   let text = this.state.text.trim();
   if (!text || !title) {
@@ -42,13 +43,14 @@ handleSubmit(e) {
 
 }
 
-
+//opens our modal
 openModal = () => {
   this.setState({
     isOpen: true
   });
 };
 
+//closes our modal
 hideModal = () => {
   this.setState({
     isOpen: false
@@ -64,26 +66,9 @@ hideModal = () => {
 render (){
   return (
     <div className="modal-window">
-    <form onSubmit={ this.handleSubmit }>
-        <input
-          type='text'
-          placeholder='title'
-
-          value={ this.state.title }
-          onChange={ this.handleTitleChange } />
-        <input
-          type='text'
-          placeholder='text'
-
-          value={ this.state.text }
-          onChange={ this.handleTextChange } />
-        <input
-          type='submit'
-          value='Add Post'/>
-          <button className='btn btn-primary' onClick={this.openModal}>
-                Open Modal
-              </button>
-      </form>
+      <button className='btn btn-primary' onClick={this.openModal}>
+        Add New Post
+      </button>
 
       <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
         <ModalHeader>
@@ -91,19 +76,28 @@ render (){
           <ModalTitle>Modal title</ModalTitle>
         </ModalHeader>
         <ModalBody>
-          <p>Ab ea ipsam iure perferendis! Ad debitis dolore excepturi
-            explicabo hic incidunt placeat quasi repellendus soluta,
-            vero. Autem delectus est laborum minus modi molestias
-            natus provident, quidem rerum sint, voluptas!</p>
+          <form>
+              <input
+                type='text'
+                placeholder='title'
+                value={ this.state.title }
+                onChange={ this.handleTitleChange } />
+              <input
+                type='text'
+                placeholder='text'
+                value={ this.state.text }
+                onChange={ this.handleTextChange } />
+          </form>
         </ModalBody>
         <ModalFooter>
           <button className='btn btn-default' onClick={this.hideModal}>
             Close
           </button>
-          <button className='btn btn-primary'>
-            Save changes
+          <button className='btn btn-primary' onClick={this.handleSubmit}>
+            Save Post
           </button>
         </ModalFooter>
+
       </Modal>
 
 
