@@ -6,15 +6,14 @@ var express = require("express"),
   session = require("express-session"),
   cookieParser = require("cookie-parser"),
   db = require("./models");
+(controllers = require("./controllers")), (LocalStrategy = require("passport-local")
+  .Strategy);
 
 //create instances
-let app = express(),
+var app = express(),
   router = express.Router();
 
 var User = db.User;
-
-// set port to env or 3000
-let port = process.env.API_PORT || 3001;
 
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -365,6 +364,7 @@ router
 app.use("/api", router);
 
 //start server
+var port = process.env.API_PORT || 3001;
 app.listen(port, function() {
   console.log(`api running on port ${port}`);
 });
