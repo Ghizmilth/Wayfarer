@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../CityInfo.css";
+import "../MainStyle.css";
 import PostBox from "./PostBox";
 
 class CityInfo extends Component {

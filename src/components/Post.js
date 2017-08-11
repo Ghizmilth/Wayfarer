@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../MainStyle.css";
 
 class Post extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Post extends Component {
   render() {
     return (
       <div>
-        
+
         <a href="#" onClick={this.deleteComment}>
           delete
         </a>

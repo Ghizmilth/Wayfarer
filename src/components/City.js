@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CityList from "./CityList";
 import CityInfo from "./CityInfo";
+import "../MainStyle.css";
 
 class City extends Component {
   render() {
