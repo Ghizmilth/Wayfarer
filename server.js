@@ -186,25 +186,9 @@ router.post('/posts', function(req, res) {
 //edit post
 router.put('/posts/:id', function(req, res) {
   db.Post.findById(req.params.id, function(err, foundPost) {
-    if (err) {
-      res.status(500).json(err);
-      (foundPost.title = req.body.title), foundPost.save(function(
-        err,
-        savedPost
-      ) {
-        if (err) {
-          console.log('did not save recipe changes');
-        }
-        res.json(savedPost);
-      });
-    }
-  });
-});
-
-router.delete('/posts/:id', function(req, res) {
-  db.Post.findOneAndRemove(req.params.id, function(err, foundPost) {
     if (err) return res.status(500).json(err);
-    foundPost.title = req.body.title;
+    console.log(req.body.name);
+    foundPost.title = req.body.name;
     foundPost.text = req.body.text;
     foundPost.save(function(err, savedPost) {
       if (err) {
@@ -214,7 +198,14 @@ router.delete('/posts/:id', function(req, res) {
     });
   });
 });
-//TODO delete post
+
+//delete post
+router.delete('/posts/:id', function(req, res) {
+  db.Post.findOneAndRemove(req.params.id, function(err, foundPost) {
+    console.log('the post that deleted is ' + foundPost);
+    res.json(foundPost);
+  });
+});
 
 /////////////////////////////////////////////////////////
 /*router

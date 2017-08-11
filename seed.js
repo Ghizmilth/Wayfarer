@@ -1,21 +1,18 @@
-let db = require('./models');
+var db = require('./models');
 
-let postsList = [];
+var postsList = [];
 postsList.push({
   title: 'This place rocks!',
   imgPath: '',
-  text: 'omg my favorite place',
-  cityId: 1
+  text: 'omg my favorite place'
 }), postsList.push({
   title: 'Tattooed offal heirloom lumbersexual',
   imgPath: '',
-  text: 'Hexagon mumblecore tilde bushwick.',
-  cityId: 1
+  text: 'Hexagon mumblecore tilde bushwick.'
 }), postsList.push({
   title: 'Cold-pressed health goth',
   imgPath: '',
-  text: 'Shoreditch PBR&B celiac, ethical jean shorts 90s neutra slow-carb.',
-  cityId: 1
+  text: 'Shoreditch PBR&B celiac, ethical jean shorts 90s neutra slow-carb.'
 });
 
 db.Post.remove({}, function(err, posts) {
@@ -28,8 +25,7 @@ db.Post.remove({}, function(err, posts) {
   posts_list.forEach(function(postData) {
     var post = new db.Post({
       title: postData.title,
-      text: postData.text,
-      cityId: postData.cityId
+      text: postData.text
     });
     post.save(function(err, savedPost) {
       if (err) {
