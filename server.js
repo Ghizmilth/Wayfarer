@@ -1,19 +1,37 @@
 //import dependencies
-var express = require('express'),
-  mongoose = require('mongoose'),
-  bodyParser = require('body-parser'),
-  db = require('./models');
+
+var express = require("express"),
+  mongoose = require("mongoose"),
+  bodyParser = require("body-parser"),
+  passport = require("passport"),
+  session = require("express-session"),
+  cookieParser = require("cookie-parser"),
+  db = require("./models");
+(controllers = require("./controllers")), (LocalStrategy = require("passport-local")
+  .Strategy);
+
 
 //create instances
-let app = express(),
+var app = express(),
   router = express.Router();
 
-// set port to env or 3000
-let port = process.env.API_PORT || 3001;
+var User = db.User;
 
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cookieParser());
+app.use(
+  session({
+    secret: "spinachsecret007", // change this!
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Prevent CORS errors
 app.use(function(req, res, next) {
@@ -23,6 +41,11 @@ app.use(function(req, res, next) {
     'Access-Control-Allow-Methods',
     'GET,HEAD,OPTIONS,POST,PUT,DELETE'
   );
+
+  //passport config
+  passport.use(new LocalStrategy(db.User.authenticate()));
+  passport.serializeUser(db.User.serializeUser());
+  passport.deserializeUser(db.User.deserializeUser());
   res.setHeader(
     'Access-Control-Allow-Headers',
     'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
@@ -262,10 +285,89 @@ router.delete('/posts/:id', function(req, res) {
   });
 });
 
+
+//auth routes
+app.get("/api/users", controllers.user.index);
+app.delete("/api/users/:user_id", controllers.user.destroy);
+app.post("/signup", function signup(req, res) {
+  console.log(`${req.body.username} ${req.body.password}`);
+  User.register(
+    new User({ username: req.body.username }),
+    req.body.password,
+    function(err, newUser) {
+      passport.authenticate("local")(req, res, function() {
+        res.send(newUser);
+      });
+    }
+  );
+});
+
+app.post("/login", passport.authenticate("local"), function(req, res) {
+  console.log(JSON.stringify(req.user));
+  res.send(req.user);
+});
+app.get("/logout", function(req, res) {
+  console.log("BEFORE logout", req);
+  req.logout();
+  res.send(req);
+  console.log("AFTER logout", req);
+});
+
+/////////////////////////////////////////////////////////
+/*router
+  .route('/cities/:id/posts')
+  .get(function(req, res) {
+    db.Post.find({ cityId: req.body.cityId }, function(err, posts) {
+      if (err) res.status(500).json({ error: err.message });
+      res.json(posts);
+    });
+  });
+
+
+router
+  .route('/posts')
+  .post(function(req, res) {
+    var post = new Post();
+    post.save(function(err) {
+      if (err) res.status(500).json({ error: err.message });
+      res.json({ message: 'Post successfully added!' });
+    });
+  });
+
+router
+  .route('/posts/:postId')
+  .get(function(req, res) {
+    Post.findById(req.params.postId, function(err, posts) {
+      if (err) res.status(500).json({ error: err.message });
+      res.json(posts);
+    });
+  })
+  .put(function(req, res) {
+    Post.findById(req.params.postId, function(err, post) {
+      if (err) res.status(500).json({ error: err.message });
+      post.title = req.body.title;
+      post.text = req.body.text;
+      post.cityId = req.body.cityId;
+
+      post.save(function(err) {
+        if (err) res.status(500).json({ error: err.message });
+        res.json({ message: 'post has been updated' });
+      });
+    });
+  })
+  .delete(function(req, res) {
+    Post.remove({ _id: req.params.postId }, function(err, post) {
+      if (err) res.status(500).json({ error: err.message });
+      res.json({ message: 'Post has been deleted' });
+    });
+  });
+*/
+
 //use router config when we call /API
 app.use('/api', router);
 
 //start server
+var port = process.env.API_PORT || 3001;
 app.listen(port, function() {
   console.log(`api running on port ${port}`);
 });
