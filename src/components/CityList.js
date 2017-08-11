@@ -1,110 +1,70 @@
 import React, { Component } from "react";
 import "../MainStyle.css";
-import {
-  Modal,
-  ModalHeader,
-  ModalTitle,
-  ModalClose,
-  ModalBody,
-  ModalFooter
-} from 'react-modal-bootstrap';
+import axios from 'axios';
+import CityForm from './CityForm'
 
 
 
 
 class CityList extends Component {
   constructor(props) {
-    super(props);
-    this.state = {name: '', imageURL: ''};
-    this.state = { isOpen: false };
-    this.handleCityChange = this.handleCityChange.bind(this);
-    this.handleImageChange = this.handleImageChange.bind(this);
+    super();
+    this.state = {data: []};
+    this.handleCityAdd = this.handleCityAdd.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loadCityFromServer = this.loadCityFromServer.bind();
   }
 
-  handleCityChange(e) {
-    this.setState({ name: e.target.value });
-  }
-
-
-  handleImageChange(e) {
-    this.setState({ imageURL: e.target.value });
+  loadCityFromServer(){
+    axios.get(this.props.url)
+    .then(res => {
+      this.setState({data: res.data.post})
+    })
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    this.hideModal();
-    let name = this.state.name.trim();
-    let imageURL = this.state.imageURL.trim();
-    if (!name || !imageURL) {
-      return;
-    }
-    this.props.onPostSubmit({ name: name, imageURL: imageURL });
-    this.setState({name: "", imageURL: ""});
+      console.log(e);
+      let city = this.state.data;
+      let newCity = city.concat(e);
+      this.setState({data: newCity});
+      console.log(this.props.url);
+      fetch(this.props.url, {
+      method: 'post',
+      body: e})
+        .then(res => {
+          console.log("RES:" , res);
+          this.setState({ data: res });
 
+        })
+        .catch(err => {
+          console.error("OOPSIES", err);
+        });
   }
 
-//opens our modal
-openModal = () => {
-  this.setState({
-    isOpen: true
-  });
-};
-
-//closes our modal
-hideModal = () => {
-  this.setState({
-    isOpen: false
-  });
-};
-
-
+  handleCityAdd(city) {
+    axios.post('api/cities', {
+      name: city.name,
+      imageURL: city.imageURL,
+      description: city.dedscription
+    })
+    .then(function (response) {
+       console.log(response);
+     })
+     .catch(function (error) {
+       console.log(error);
+     });
+}
 
 
-  render() {
-    return (
 
-      <div className="modal-window">
-        <h1>The World is Your Playground</h1>
-        <button className='btn btn-primary' onClick={this.openModal}>
-          Add New City
-        </button>
+render() {
+  return(
+    <div>
+      <CityForm onCitySubmit={this.handleSubmit}/>
+    </div>
+  )
+}
 
-        <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
-          <ModalHeader>
-            <ModalClose onClick={this.hideModal}/>
-            <ModalTitle>Modal title</ModalTitle>
-          </ModalHeader>
-          <ModalBody>
-            <form>
-                <input
-                  type='text'
-                  placeholder='name'
-                  value={ this.state.name }
-                  onChange={ this.handleNameChange } />
-                <input
-                  type='text'
-                  placeholder='imageURL'
-                  value={ this.state.imageURL }
-                  onChange={ this.handleImageChange } />
-            </form>
-          </ModalBody>
-          <ModalFooter>
-            <button className='btn btn-default' onClick={this.hideModal}>
-              Close
-            </button>
-            <button className='btn btn-primary' onClick={this.handleSubmit}>
-              Save City
-            </button>
-          </ModalFooter>
-
-        </Modal>
-
-
-      </div>
-)
-
-  }
 }
 
 export default CityList;

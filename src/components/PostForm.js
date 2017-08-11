@@ -60,10 +60,6 @@ hideModal = () => {
 
 
 
-
-
-
-
 render (){
   return (
     <div className="modal-window">

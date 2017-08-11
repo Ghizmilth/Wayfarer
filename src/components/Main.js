@@ -8,7 +8,7 @@ class Main extends Component {
     return (
       <div className="MainPage">
         <Header />
-        <City />
+        <City url="http://localhost:3001/api"/>
       </div>
     );
   }

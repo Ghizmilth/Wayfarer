@@ -2,6 +2,7 @@
 var express = require("express"),
   mongoose = require("mongoose"),
   bodyParser = require("body-parser"),
+  cors = require("cors"),
   db = require("./models");
 
 //create instances
@@ -14,7 +15,7 @@ let port = process.env.API_PORT || 3001;
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(cors());
 //Prevent CORS errors
 app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -70,7 +71,7 @@ router.post("/cities", function(req, res) {
 
   var newCity = {
     name: req.body.name,
-    image: req.body.image,
+    imageURL: req.body.image,
     description: req.body.description
   };
 
@@ -223,14 +224,14 @@ router.get("/posts/:id", function(req, res) {
 router.post("/posts", function(req, res) {
   console.log("post create", req.body);
 
-  var newPost = {
+  var bodyPost = {
     _user: req.body._user,
     _city: req.body._city,
     title: req.body.title,
     text: req.body.text
   };
 
-  db.Post.create(newPost, function(err, newPost) {
+  db.Post.create(bodyPost, function(err, newPost) {
     if (err) {
       res.status(500).send(err);
       return;
