@@ -3,15 +3,6 @@ var express = require('express'),
   mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
   db = require('./models');
-Post = require('./models/post');
-
-const cities = [
-  {
-    _id: 1,
-    title: 'San Francisco',
-    imgPath: ''
-  }
-];
 
 //create instances
 var app = express(),
@@ -51,7 +42,7 @@ router.get('/', function(req, res) {
 /// CITY ////
 ////////////
 
-//get all city
+//get all cities
 router.get('/cities', function(req, res) {
   db.City.find({}, function(err, cities) {
     if (err) {
@@ -62,7 +53,7 @@ router.get('/cities', function(req, res) {
   });
 });
 
-//get one cities
+//get one city
 router.get('/cities/:id', function(req, res) {
   db.City.findById(req.params.id, function(err, city) {
     if (err) {
@@ -189,6 +180,38 @@ router.post('/posts', function(req, res) {
       return;
     }
     res.json(newPost);
+  });
+});
+
+//edit post
+router.put('/posts/:id', function(req, res) {
+  db.Post.findById(req.params.id, function(err, foundPost) {
+    if (err) {
+      res.status(500).json(err);
+      (foundPost.title = req.body.title), foundPost.save(function(
+        err,
+        savedPost
+      ) {
+        if (err) {
+          console.log('did not save recipe changes');
+        }
+        res.json(savedPost);
+      });
+    }
+  });
+});
+
+router.delete('/posts/:id', function(req, res) {
+  db.Post.findOneAndRemove(req.params.id, function(err, foundPost) {
+    if (err) return res.status(500).json(err);
+    foundPost.title = req.body.title;
+    foundPost.text = req.body.text;
+    foundPost.save(function(err, savedPost) {
+      if (err) {
+        console.log('did not save post changes');
+      }
+      res.json(savedPost);
+    });
   });
 });
 //TODO delete post
