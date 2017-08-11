@@ -1,11 +1,12 @@
-'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-const CitySchema = new Schema({
+var CitySchema = new Schema({
   name: String,
-  imageURL: String,
+  image: String,
+  description: String
+
 });
 
 module.exports = mongoose.model('City', CitySchema);
