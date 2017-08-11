@@ -2,11 +2,16 @@
 var express = require("express"),
   mongoose = require("mongoose"),
   bodyParser = require("body-parser"),
+  passport = require("passport"),
+  session = require("express-session"),
+  cookieParser = require("cookie-parser"),
   db = require("./models");
 
 //create instances
 let app = express(),
   router = express.Router();
+
+var User = db.User;
 
 // set port to env or 3000
 let port = process.env.API_PORT || 3001;
@@ -14,6 +19,18 @@ let port = process.env.API_PORT || 3001;
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cookieParser());
+app.use(
+  session({
+    secret: "spinachsecret007", // change this!
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Prevent CORS errors
 app.use(function(req, res, next) {
@@ -23,6 +40,11 @@ app.use(function(req, res, next) {
     "Access-Control-Allow-Methods",
     "GET,HEAD,OPTIONS,POST,PUT,DELETE"
   );
+
+  //passport config
+  passport.use(new LocalStrategy(db.User.authenticate()));
+  passport.serializeUser(db.User.serializeUser());
+  passport.deserializeUser(db.User.deserializeUser());
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
@@ -261,6 +283,33 @@ router.delete("/posts/:id", function(req, res) {
     console.log("the post that deleted is " + foundPost);
     res.json(foundPost);
   });
+});
+
+//auth routes
+app.get("/api/users", controllers.user.index);
+app.delete("/api/users/:user_id", controllers.user.destroy);
+app.post("/signup", function signup(req, res) {
+  console.log(`${req.body.username} ${req.body.password}`);
+  User.register(
+    new User({ username: req.body.username }),
+    req.body.password,
+    function(err, newUser) {
+      passport.authenticate("local")(req, res, function() {
+        res.send(newUser);
+      });
+    }
+  );
+});
+
+app.post("/login", passport.authenticate("local"), function(req, res) {
+  console.log(JSON.stringify(req.user));
+  res.send(req.user);
+});
+app.get("/logout", function(req, res) {
+  console.log("BEFORE logout", req);
+  req.logout();
+  res.send(req);
+  console.log("AFTER logout", req);
 });
 
 /////////////////////////////////////////////////////////

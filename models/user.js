@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
@@ -6,9 +6,12 @@ var UserSchema = new Schema({
   password: String,
   hometown: {
     type: Schema.Types.ObjectId,
-    ref: 'City'
+    ref: "City"
   },
   image: String
 });
 
-module.exports = mongoose.model('User', UserSchema);
+UserSchema.plugin(passportLocalMongoose);
+
+var User = mongoose.model("User", UserSchema);
+module.exports = User;
