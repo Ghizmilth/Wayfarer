@@ -6,11 +6,11 @@ var PostSchema = new Schema({
   text: String,
   _user: {
     type: Schema.Types.ObjectId,
-    ref: 'City'
+    ref: 'User'
   },
   _city: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'City'
   }
 });
 

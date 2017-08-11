@@ -1,8 +1,9 @@
 //import dependencies
-let express = require('express'),
+var express = require('express'),
   mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
-  Post = require('./models/post');
+  db = require('./models');
+Post = require('./models/post');
 
 const cities = [
   {
@@ -13,11 +14,11 @@ const cities = [
 ];
 
 //create instances
-let app = express(),
+var app = express(),
   router = express.Router();
 
 // set port to env or 3000
-let port = process.env.API_PORT || 3001;
+var port = process.env.API_PORT || 3001;
 
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,37 +47,166 @@ router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!' });
 });
 
+/////////////
+/// CITY ////
+////////////
+
+//get all city
 router.get('/cities', function(req, res) {
-  res.json(cities);
+  db.City.find({}, function(err, cities) {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.json(cities);
+  });
 });
 
+//get one cities
 router.get('/cities/:id', function(req, res) {
-  let response = cities.filter(obj => obj._id == req.params.id);
-  res.json(response);
+  db.City.findById(req.params.id, function(err, city) {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.json(city);
+  });
 });
-//add /posts route to our /api router here
-//adding the /posts route to our /api router
-router
+
+//create city
+router.post('/cities', function(req, res) {
+  console.log('city create', req.body);
+
+  var newCity = {
+    name: req.body.name,
+    image: req.body.image,
+    description: req.body.description
+  };
+
+  db.City.create(newCity, function(err, newCity) {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.json(newCity);
+  });
+});
+//TODO delete city
+
+/////////////
+/// USERS ////
+////////////
+
+//get all users
+router.get('/users', function(req, res) {
+  db.User.find({}, function(err, users) {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.json(users);
+  });
+});
+
+//get one user
+router.get('/users/:id', function(req, res) {
+  db.User
+    .findById(req.params.id)
+    .populate('hometown')
+    .exec(function(err, user) {
+      if (err) {
+        res.status(500).send(err);
+        return;
+      }
+      res.json(user);
+    });
+});
+
+//create user
+router.post('/users', function(req, res) {
+  console.log('user create', req.body);
+
+  var newUser = {
+    username: req.body.username,
+    password: req.body.password,
+    hometown: req.body.hometown,
+    image: req.body.image
+  };
+
+  db.User.create(newUser, function(err, newUser) {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.json(newUser);
+  });
+});
+//TODO delete user
+
+/////////////
+/// POSTS ////
+////////////
+
+//get all posts
+router.get('/posts', function(req, res) {
+  db.Post.find({}, function(err, posts) {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.json(posts);
+  });
+});
+
+//get one post
+router.get('/posts/:id', function(req, res) {
+  db.Post
+    .findById(req.params.id)
+    .populate('_user _city')
+    .exec(function(err, post) {
+      if (err) {
+        res.status(500).send(err);
+        return;
+      }
+      res.json(post);
+    });
+});
+
+//create post
+router.post('/posts', function(req, res) {
+  console.log('post create', req.body);
+
+  var newPost = {
+    _user: req.body._user,
+    _city: req.body._city,
+    title: req.body.title,
+    text: req.body.text
+  };
+
+  db.Post.create(newPost, function(err, newPost) {
+    if (err) {
+      res.status(500).send(err);
+      return;
+    }
+    res.json(newPost);
+  });
+});
+//TODO delete post
+
+/////////////////////////////////////////////////////////
+/*router
   .route('/cities/:id/posts')
-  //retrieve all posts from the database mapped to a city
   .get(function(req, res) {
-    //looks at our Post Schema
-    Post.find({ cityId: req.body.cityId }, function(err, posts) {
+    db.Post.find({ cityId: req.body.cityId }, function(err, posts) {
       if (err) res.status(500).json({ error: err.message });
-      //                                      responds with a json object of our database posts.
       res.json(posts);
     });
   });
 
 router
   .route('/posts')
-  //post new to the database
   .post(function(req, res) {
     var post = new Post();
-
-    //**DO WE NEED THIS?
-    // post.cityId = req.body.cityId;
-
     post.save(function(err) {
       if (err) res.status(500).json({ error: err.message });
       res.json({ message: 'Post successfully added!' });
@@ -85,19 +215,15 @@ router
 
 router
   .route('/posts/:postId')
-  //The put method gives us the chance to update our post based on the ID passed to the route
   .get(function(req, res) {
-    //looks at our Post Schema
     Post.findById(req.params.postId, function(err, posts) {
       if (err) res.status(500).json({ error: err.message });
-      // responds with a json object of our database posts.
       res.json(posts);
     });
   })
   .put(function(req, res) {
     Post.findById(req.params.postId, function(err, post) {
       if (err) res.status(500).json({ error: err.message });
-      //make newcessary changes to db model instance
       post.title = req.body.title;
       post.text = req.body.text;
       post.cityId = req.body.cityId;
@@ -108,15 +234,13 @@ router
       });
     });
   })
-  //delete method for removing a post from our database
   .delete(function(req, res) {
-    //selects the post by its ID, then removes it.
     Post.remove({ _id: req.params.postId }, function(err, post) {
       if (err) res.status(500).json({ error: err.message });
       res.json({ message: 'Post has been deleted' });
     });
   });
-
+*/
 //use router config when we call /API
 app.use('/api', router);
 
