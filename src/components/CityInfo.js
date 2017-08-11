@@ -10,8 +10,6 @@ class CityInfo extends Component {
           <section className="row">
             <article className="col-sm-6">
               <h2>San Francisco</h2>
-            </article>
-            <article className="col-sm-6">
               <div className="image-space">
                 <img
                   src={
@@ -25,7 +23,7 @@ class CityInfo extends Component {
             </article>
           </section>
         </div>
-        <PostBox url="http://localhost:3001/api/posts" />
+
       </div>
     );
   }

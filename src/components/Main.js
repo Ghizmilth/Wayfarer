@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import City from "./City";
+import City from "./CityContainer";
 import "../MainStyle.css";
 
 class Main extends Component {
