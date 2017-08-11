@@ -1,3 +1,5 @@
+/*This is for main body*/
+
 body {
   margin: 0;
   padding: 0;
@@ -6,10 +8,14 @@ body {
 }
 
 
+/*This is for  header bar*/
 .nav-bar {
   background-color: #6B7A8F;
 
 }
+
+
+
 
 .image-space {
   height: 120%;
