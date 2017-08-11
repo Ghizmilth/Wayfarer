@@ -21,8 +21,6 @@ let app = express(),
 // set port to env or 3000
 let port = process.env.API_PORT || 3001;
 
-
-
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -92,30 +90,26 @@ router
   //The put method gives us the chance to update our post based on the ID passed to the route
   .get(function(req, res) {
     //looks at our Post Schema
-    Post.find({cityId: req.body.cityId},function(err, posts) {
+    Post.findById(req.params.postId,function(err, post) {
       if (err) res.status(500).json({error:err.message});
       //                                      responds with a json object of our database posts.
-      res.json(posts);
+      res.json(post);
     });
-    put(function(req, res) {
+  })
+  .put(function(req, res) {
     Post.findById(req.params.postId, function(err, post) {
       if (err) res.status(500).json({error:err.message});
       //make newcessary changes to db model instance
       post.title = req.body.title;
-      .get(function(req, res) {
-        //looks at our Post Schema
-        Post.find({cityId: req.body.cityId},function(err, posts) {
-          if (err) res.status(500).json({error:err.message});
-          //                                      responds with a json object of our database posts.
-          res.json(posts);
-        });
-        post.cityId = req.body.cityId
-        //save leieeieieieieieieipost
-        post.save(function(err) {
-          if (err) res.status(500).json({error:err.message});
-          res.json({ message: "Post has been updated" });
-        });
-      });,
+      post.text = req.body.text;
+      post.cityId = req.body.cityId;
+      //save leieeieieieieieieipost
+      post.save(function(err) {
+        if (err) res.status(500).json({error:err.message});
+        res.json({ message: "Post has been updated" });
+      });
+    })
+  })
   //delete method for removing a post from our database
   .delete(function(req, res) {
     //selects the post by its ID, then removes it.

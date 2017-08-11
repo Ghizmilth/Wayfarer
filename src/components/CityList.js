@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import CityListItem from "./CityListItem"
 
 class CityList extends Component {
   render() {
-    return <h1>City list will be here!!</h1>;
+    return (
+        <div className="CityList">
+          <CityListItem />
+        </div>
+    )
   }
 }
 

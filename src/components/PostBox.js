@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import City from "./City"
 import PostList from "./PostList";
+import Post from "./Post";
 
 class PostBox extends Component {
   constructor(props) {
@@ -17,21 +19,14 @@ class PostBox extends Component {
       .catch(err => {
         console.log(err);
       });
-  }
+    }
 
   render() {
     return (
-      <div>
-        <div className="post-box">
-          <h3>
-            <PostList />
-          </h3>
-          <button type="submit" value="Add Post">
-            Add Post
-          </button>
-        </div>
-
-        <PostList onPostDelete={this.handlePostDelete} data={this.state.data} />
+      <div className="PostBox">
+        <h2>PostBox</h2>
+        <PostList />
+        <PostForm />
       </div>
     );
   }

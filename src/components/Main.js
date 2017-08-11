@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import City from "./City";
+import PageContent from "./PageContent"
+import CityList from "./CityList";
+import PostBox from "./PostBox";
 
 class Main extends Component {
   render() {
     return (
-      <div className="MainPage">
+      <div className="Main">
         <Header />
-        <City />
+        <CityList />
+        <PostBox />
       </div>
     );
   }

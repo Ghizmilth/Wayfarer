@@ -4,8 +4,8 @@ import Post from "./Post";
 class PostList extends Component {
   render() {
     return (
-      <div>
-        <post />
+      <div className="PostList">
+        <Post />
       </div>
     );
   }
