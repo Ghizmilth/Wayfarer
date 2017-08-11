@@ -1,3 +1,4 @@
+
 var db = require('./models');
 
 var postsList = [];
@@ -26,6 +27,7 @@ db.Post.remove({}, function(err, posts) {
     var post = new db.Post({
       title: postData.title,
       text: postData.text
+
     });
     post.save(function(err, savedPost) {
       if (err) {

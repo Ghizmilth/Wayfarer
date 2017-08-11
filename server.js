@@ -1,15 +1,13 @@
-//import dependencies
-var express = require('express'),
-  mongoose = require('mongoose'),
-  bodyParser = require('body-parser'),
-  db = require('./models');
+
 
 //create instances
-var app = express(),
+let app = express(),
   router = express.Router();
 
+  app.use(cors());
 // set port to env or 3000
-var port = process.env.API_PORT || 3001;
+let port = process.env.API_PORT || 3001;
+
 
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +34,7 @@ app.use(function(req, res, next) {
 //set route path and init API
 router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!' });
+
 });
 
 /////////////
@@ -272,6 +271,7 @@ router.delete('/posts/:id', function(req, res) {
       res.json(posts);
     });
   });
+
 
 router
   .route('/posts')

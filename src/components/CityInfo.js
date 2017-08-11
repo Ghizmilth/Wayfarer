@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../CityInfo.css";
+import "../MainStyle.css";
 import PostBox from "./PostBox";
 
 class CityInfo extends Component {
@@ -25,7 +25,7 @@ class CityInfo extends Component {
             </article>
           </section>
         </div>
-        <PostBox />
+        <PostBox url="http://localhost:3001/api/posts" />
       </div>
     );
   }

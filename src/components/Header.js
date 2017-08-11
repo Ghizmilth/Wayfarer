@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../MainStyle.css";
 
 class Header extends Component {
   render() {
@@ -7,7 +8,7 @@ class Header extends Component {
         <div className="container">
           <section className="row row3 nesting">
             <article className="col-sm-12">
-              <h2>This is where Header will show up</h2>
+              <h2>Wayfarer</h2>
             </article>
           </section>
         </div>
