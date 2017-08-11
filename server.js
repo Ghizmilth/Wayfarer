@@ -82,6 +82,34 @@ router.post('/cities', function(req, res) {
     res.json(newCity);
   });
 });
+
+//edit city
+router.put('/cities/:id', function(req, res) {
+  db.City.findById(req.params.id, function(err, foundCity) {
+    if (err) return res.status(500).json(err);
+    console.log(req.body.name);
+    foundCity.name = req.body.name;
+    foundCity.image = req.body.image;
+    foundCity.description = req.body.description;
+    foundCity.save(function(err, savedCity) {
+      if (err) {
+        console.log('did not save user changes');
+      }
+      res.json(savedCity);
+    });
+  });
+});
+
+//delete city
+router.delete('/cities/:id', function(req, res) {
+  db.City.findOneAndRemove({ _id: req.params.id }, function(err, foundCity) {
+    if (err) {
+      console.log('did not delete ' + req.params.name);
+    }
+    console.log('the city that deleted is ' + foundCity);
+    res.json(foundCity);
+  });
+});
 //TODO delete city
 
 /////////////
