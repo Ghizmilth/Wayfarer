@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../MainStyle.css";
-import PostBox from "./PostBox";
 
 class CityInfo extends Component {
   render() {
@@ -25,7 +24,6 @@ class CityInfo extends Component {
             </article>
           </section>
         </div>
-        <PostBox url="http://localhost:3001/api/posts" />
       </div>
     );
   }
