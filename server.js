@@ -188,7 +188,7 @@ router.put('/posts/:id', function(req, res) {
   db.Post.findById(req.params.id, function(err, foundPost) {
     if (err) return res.status(500).json(err);
     console.log(req.body.name);
-    foundPost.title = req.body.name;
+    foundPost.title = req.body.title;
     foundPost.text = req.body.text;
     foundPost.save(function(err, savedPost) {
       if (err) {
