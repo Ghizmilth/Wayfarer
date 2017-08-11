@@ -132,7 +132,35 @@ router.post('/users', function(req, res) {
     res.json(newUser);
   });
 });
-//TODO delete user
+
+//edit user
+router.put('/users/:id', function(req, res) {
+  db.User.findById(req.params.id, function(err, foundUser) {
+    if (err) return res.status(500).json(err);
+    console.log(req.body.name);
+    foundUser.username = req.body.username;
+    foundUser.password = req.body.password;
+    foundUser.hometown = req.body.hometown;
+    foundUser.image = req.body.image;
+    foundUser.save(function(err, savedUser) {
+      if (err) {
+        console.log('did not save user changes');
+      }
+      res.json(savedUser);
+    });
+  });
+});
+
+//delete user
+router.delete('/users/:id', function(req, res) {
+  db.User.findOneAndRemove({ _id: req.params.id }, function(err, foundUser) {
+    if (err) {
+      console.log('did not delete ' + req.params.username);
+    }
+    console.log('the user that deleted is ' + foundUser);
+    res.json(foundUser);
+  });
+});
 
 /////////////
 /// POSTS ////
