@@ -21,7 +21,7 @@ class Post extends Component {
   render() {
     return (
       <div>
-        <h3 post goes here />
+        
         <a href="#" onClick={this.deleteComment}>
           delete
         </a>

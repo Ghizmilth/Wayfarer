@@ -25,7 +25,7 @@ class CityInfo extends Component {
             </article>
           </section>
         </div>
-        <PostBox />
+        <PostBox url="http://localhost:3001/api/posts" />
       </div>
     );
   }
