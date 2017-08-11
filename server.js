@@ -1,13 +1,15 @@
-
+//import dependencies
+var express = require("express"),
+  mongoose = require("mongoose"),
+  bodyParser = require("body-parser"),
+  db = require("./models");
 
 //create instances
 let app = express(),
   router = express.Router();
 
-  app.use(cors());
 // set port to env or 3000
 let port = process.env.API_PORT || 3001;
-
 
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,26 +17,25 @@ app.use(bodyParser.json());
 
 //Prevent CORS errors
 app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET,HEAD,OPTIONS,POST,PUT,DELETE'
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,OPTIONS,POST,PUT,DELETE"
   );
   res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
+    "Access-Control-Allow-Headers",
+    "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
   );
 
   //Remove caching
-  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader("Cache-Control", "no-cache");
   next();
 });
 
 //set route path and init API
-router.get('/', function(req, res) {
-  res.json({ message: 'API Initialized!' });
-
+router.get("/", function(req, res) {
+  res.json({ message: "API Initialized!" });
 });
 
 /////////////
@@ -42,7 +43,7 @@ router.get('/', function(req, res) {
 ////////////
 
 //get all cities
-router.get('/cities', function(req, res) {
+router.get("/cities", function(req, res) {
   db.City.find({}, function(err, cities) {
     if (err) {
       res.status(500).send(err);
@@ -53,7 +54,7 @@ router.get('/cities', function(req, res) {
 });
 
 //get one city
-router.get('/cities/:id', function(req, res) {
+router.get("/cities/:id", function(req, res) {
   db.City.findById(req.params.id, function(err, city) {
     if (err) {
       res.status(500).send(err);
@@ -64,8 +65,8 @@ router.get('/cities/:id', function(req, res) {
 });
 
 //create city
-router.post('/cities', function(req, res) {
-  console.log('city create', req.body);
+router.post("/cities", function(req, res) {
+  console.log("city create", req.body);
 
   var newCity = {
     name: req.body.name,
@@ -83,7 +84,7 @@ router.post('/cities', function(req, res) {
 });
 
 //edit city
-router.put('/cities/:id', function(req, res) {
+router.put("/cities/:id", function(req, res) {
   db.City.findById(req.params.id, function(err, foundCity) {
     if (err) return res.status(500).json(err);
     console.log(req.body.name);
@@ -92,7 +93,7 @@ router.put('/cities/:id', function(req, res) {
     foundCity.description = req.body.description;
     foundCity.save(function(err, savedCity) {
       if (err) {
-        console.log('did not save user changes');
+        console.log("did not save user changes");
       }
       res.json(savedCity);
     });
@@ -100,12 +101,12 @@ router.put('/cities/:id', function(req, res) {
 });
 
 //delete city
-router.delete('/cities/:id', function(req, res) {
+router.delete("/cities/:id", function(req, res) {
   db.City.findOneAndRemove({ _id: req.params.id }, function(err, foundCity) {
     if (err) {
-      console.log('did not delete ' + req.params.name);
+      console.log("did not delete " + req.params.name);
     }
-    console.log('the city that deleted is ' + foundCity);
+    console.log("the city that deleted is " + foundCity);
     res.json(foundCity);
   });
 });
@@ -116,7 +117,7 @@ router.delete('/cities/:id', function(req, res) {
 ////////////
 
 //get all users
-router.get('/users', function(req, res) {
+router.get("/users", function(req, res) {
   db.User.find({}, function(err, users) {
     if (err) {
       res.status(500).send(err);
@@ -127,10 +128,10 @@ router.get('/users', function(req, res) {
 });
 
 //get one user
-router.get('/users/:id', function(req, res) {
+router.get("/users/:id", function(req, res) {
   db.User
     .findById(req.params.id)
-    .populate('hometown')
+    .populate("hometown")
     .exec(function(err, user) {
       if (err) {
         res.status(500).send(err);
@@ -141,8 +142,8 @@ router.get('/users/:id', function(req, res) {
 });
 
 //create user
-router.post('/users', function(req, res) {
-  console.log('user create', req.body);
+router.post("/users", function(req, res) {
+  console.log("user create", req.body);
 
   var newUser = {
     username: req.body.username,
@@ -161,7 +162,7 @@ router.post('/users', function(req, res) {
 });
 
 //edit user
-router.put('/users/:id', function(req, res) {
+router.put("/users/:id", function(req, res) {
   db.User.findById(req.params.id, function(err, foundUser) {
     if (err) return res.status(500).json(err);
     console.log(req.body.name);
@@ -171,7 +172,7 @@ router.put('/users/:id', function(req, res) {
     foundUser.image = req.body.image;
     foundUser.save(function(err, savedUser) {
       if (err) {
-        console.log('did not save user changes');
+        console.log("did not save user changes");
       }
       res.json(savedUser);
     });
@@ -179,12 +180,12 @@ router.put('/users/:id', function(req, res) {
 });
 
 //delete user
-router.delete('/users/:id', function(req, res) {
+router.delete("/users/:id", function(req, res) {
   db.User.findOneAndRemove({ _id: req.params.id }, function(err, foundUser) {
     if (err) {
-      console.log('did not delete ' + req.params.username);
+      console.log("did not delete " + req.params.username);
     }
-    console.log('the user that deleted is ' + foundUser);
+    console.log("the user that deleted is " + foundUser);
     res.json(foundUser);
   });
 });
@@ -194,7 +195,7 @@ router.delete('/users/:id', function(req, res) {
 ////////////
 
 //get all posts
-router.get('/posts', function(req, res) {
+router.get("/posts", function(req, res) {
   db.Post.find({}, function(err, posts) {
     if (err) {
       res.status(500).send(err);
@@ -205,10 +206,10 @@ router.get('/posts', function(req, res) {
 });
 
 //get one post
-router.get('/posts/:id', function(req, res) {
+router.get("/posts/:id", function(req, res) {
   db.Post
     .findById(req.params.id)
-    .populate('_user _city')
+    .populate("_user _city")
     .exec(function(err, post) {
       if (err) {
         res.status(500).send(err);
@@ -219,8 +220,8 @@ router.get('/posts/:id', function(req, res) {
 });
 
 //create post
-router.post('/posts', function(req, res) {
-  console.log('post create', req.body);
+router.post("/posts", function(req, res) {
+  console.log("post create", req.body);
 
   var newPost = {
     _user: req.body._user,
@@ -239,7 +240,7 @@ router.post('/posts', function(req, res) {
 });
 
 //edit post
-router.put('/posts/:id', function(req, res) {
+router.put("/posts/:id", function(req, res) {
   db.Post.findById(req.params.id, function(err, foundPost) {
     if (err) return res.status(500).json(err);
     console.log(req.body.name);
@@ -247,7 +248,7 @@ router.put('/posts/:id', function(req, res) {
     foundPost.text = req.body.text;
     foundPost.save(function(err, savedPost) {
       if (err) {
-        console.log('did not save post changes');
+        console.log("did not save post changes");
       }
       res.json(savedPost);
     });
@@ -255,9 +256,9 @@ router.put('/posts/:id', function(req, res) {
 });
 
 //delete post
-router.delete('/posts/:id', function(req, res) {
+router.delete("/posts/:id", function(req, res) {
   db.Post.findOneAndRemove(req.params.id, function(err, foundPost) {
-    console.log('the post that deleted is ' + foundPost);
+    console.log("the post that deleted is " + foundPost);
     res.json(foundPost);
   });
 });
@@ -312,7 +313,7 @@ router
   });
 */
 //use router config when we call /API
-app.use('/api', router);
+app.use("/api", router);
 
 //start server
 app.listen(port, function() {
