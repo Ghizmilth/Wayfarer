@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import PostBox from './PostBox';
-import CityForm from './CityForm'
+import PostBox from "./PostBox";
+import CityForm from "./CityForm";
 import CityInfo from "./CityInfo";
 import "../MainStyle.css";
 
