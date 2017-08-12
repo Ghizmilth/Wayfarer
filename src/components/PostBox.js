@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import City from "./City"
 import PostList from "./PostList";
-<<<<<<< HEAD
 import Post from "./Post";
-=======
 import PostForm from "./PostForm";
 import "../MainStyle.css";
 
->>>>>>> 61dc4a9b6bd835761f58c9c5cb4935438dc8f964
+
 
 class PostBox extends Component {
   constructor(props) {
@@ -61,23 +58,15 @@ handleSubmit(e) {
 
   render() {
     return (
-<<<<<<< HEAD
+
       <div className="PostBox">
-        <h2>PostBox</h2>
-        <PostList />
-        <PostForm />
-=======
-      <div>
-        <div >
           <h2 >Comment:</h2>
         <PostList
           onPostDelete={ this.handlePostDelete }
           data={ this.state.data } />
         <PostForm onPostSubmit={ this.handleSubmit }/>
+        </div>
 
-      </div>
->>>>>>> 61dc4a9b6bd835761f58c9c5cb4935438dc8f964
-      </div>
     );
   }
 }

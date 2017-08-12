@@ -46,7 +46,7 @@ class Post extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
+
       <div className="post">
         <form id="{this.state._id}-update" action="#" onsubmit="PostUpdateHandleSubmit(this.state._id)" method="PUT" className="post-update-form" name="{this.state.id._id}-update">
           <div className="col-md-10 col-md-offset-1">
@@ -85,7 +85,7 @@ class Post extends Component {
             </div>
           </div>
         </form>
-=======
+
       <div className="modal-window">
         <button className="btn btn-primary" onClick={this.openModal}>
           Delete
@@ -103,7 +103,7 @@ class Post extends Component {
             </form>
           </ModalFooter>
         </Modal>
->>>>>>> 61dc4a9b6bd835761f58c9c5cb4935438dc8f964
+</div>
       </div>
     );
   }

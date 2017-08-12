@@ -28,6 +28,7 @@ class CityList extends Component {
       let newCity = city.concat(e);
       this.setState({data: newCity});
       console.log(this.props.url);
+
       fetch(this.props.url, {
       method: 'post',
       body: e})
@@ -49,7 +50,7 @@ class CityList extends Component {
     })
     .then(function (response) {
        console.log(response);
-                })
+     })
      .catch(function (error) {
        console.log(error);
      });

@@ -1,20 +1,5 @@
 import React, { Component } from "react";
 import Header from "./Header";
-<<<<<<< HEAD
-import PageContent from "./PageContent"
-import CityList from "./CityList";
-import PostBox from "./PostBox";
-
-class Main extends Component {
-  render() {
-    return (
-      <div className="Main">
-        <Header />
-        <CityList />
-        <PostBox />
-      </div>
-=======
-
 import $ from "jquery-ajax";
 import { Link } from "react-router";
 import { browserHistory } from "react-router";
@@ -59,7 +44,7 @@ class Main extends Component {
         console.log(err);
       }
 
->>>>>>> 61dc4a9b6bd835761f58c9c5cb4935438dc8f964
+
     );
   }
   handleLogout() {
