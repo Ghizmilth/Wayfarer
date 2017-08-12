@@ -6,7 +6,7 @@ class CityInfo extends Component {
       <div className="CityInfo">
         <div className="container">
           <section className="row">
-            <h2>City Info Here</h2
+            <h2>City Info Here</h2>
           </section>
         </div>
       </div>

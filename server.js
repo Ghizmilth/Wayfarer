@@ -7,12 +7,11 @@ var express = require("express"),
   session = require("express-session"),
   cookieParser = require("cookie-parser"),
 
-  db = require("./models");
+db = require("./models");
 (controllers = require("./controllers")), (LocalStrategy = require("passport-local")
   .Strategy);
 
-<<<<<<< HEAD
-=======
+
 
 //create instances
 var app = express(),
@@ -20,7 +19,7 @@ var app = express(),
 
 var User = db.User;
 
->>>>>>> 61dc4a9b6bd835761f58c9c5cb4935438dc8f964
+
 //config API to use bodyParser and look for JSON in req.body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
