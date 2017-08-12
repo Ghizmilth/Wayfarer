@@ -4,7 +4,6 @@ import PostList from "./PostList";
 import PostForm from "./PostForm";
 import "../MainStyle.css";
 
-
 class PostBox extends Component {
   constructor(props) {
     super();
@@ -14,34 +13,35 @@ class PostBox extends Component {
     this.loadPostFromServer = this.loadPostFromServer.bind(this);
   }
 
-loadPostFromServer(){
-  axios.get(this.props.url)
-  .then(res => {
-    this.setState({data: res.data.post})
-  })
-}
+  loadPostFromServer() {
+    axios.get(this.props.url).then(res => {
+      this.setState({ data: res.data.post });
+    });
+  }
 
-handleSubmit(e) {
+  handleSubmit(e) {
     console.log(e);
     let post = this.state.data;
-    post.id = Date.now();
+    e._user = "fake user data"; //  user_id
+    e._city = "fake city data;"; // city_id
     let newPost = post.concat(e);
-    this.setState({data: newPost});
+    this.setState({ data: newPost });
     console.log(this.props.url);
-    axios.post(this.props.url, e)
+    axios
+      .post(this.props.url, e)
       .then(res => {
-        console.log("RES:" , res);
+        console.log("RES:", res);
         //this.setState({ data: res });
         //handleAddPost(res);
       })
       .catch(err => {
         console.error("OOPSIES", err);
       });
-}
-
+  }
 
   handlePostDelete(id) {
-    axios.delete(`${this.props.url}/${id}`)
+    axios
+      .delete(`${this.props.url}/${id}`)
       .then(res => {
         console.log("Post Deleted");
       })
@@ -50,21 +50,17 @@ handleSubmit(e) {
       });
   }
 
-
-
-
-
   render() {
     return (
       <div>
-        <div >
-          <h2 >Comment:</h2>
-        <PostList
-          onPostDelete={ this.handlePostDelete }
-          data={ this.state.data } />
-        <PostForm onPostSubmit={ this.handleSubmit }/>
-
-      </div>
+        <div>
+          <h2>Comment:</h2>
+          <PostList
+            onPostDelete={this.handlePostDelete}
+            data={this.state.data}
+          />
+          <PostForm onPostSubmit={this.handleSubmit} />
+        </div>
       </div>
     );
   }
