@@ -58,14 +58,20 @@ handleSubmit(e) {
 
   render() {
     return (
-
+      <div className="container">
       <div className="PostBox">
+         <div className="row">
           <h2 >Comment:</h2>
+          <PostForm onPostSubmit={ this.handleSubmit }/>
+          </div>
+          <div className="row">
         <PostList
           onPostDelete={ this.handlePostDelete }
           data={ this.state.data } />
-        <PostForm onPostSubmit={ this.handleSubmit }/>
+      </div>
+
         </div>
+      </div>
 
     );
   }

@@ -99,7 +99,7 @@ class Main extends Component {
         <div>
           <p>logged in</p>
 
-          <div>
+          <div classNamer="col">
             <CityContainer
               isAuthenticated={this.state.isAuthenticated}
               username={this.state.username}

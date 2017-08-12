@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PostBox from './PostBox';
-import CityForm from './CityForm'
+import CityList from './CityList'
 import CityInfo from "./CityInfo";
 import "../MainStyle.css";
 
@@ -9,22 +9,19 @@ class CityContainer extends Component {
     return (
       <div className="city-main">
         <div className="container">
-          <section className="row">
-          <article className="col-sm-4">
-          <CityForm />
-          </article>
-          </section>
-          <section>
-            <article className="col-sm-4">
+          <div className="row">
+          <div className="col-sm-4">
+          <CityList />
+          </div>
+          <div className="col-sm-8">
             <CityInfo />
-            </article>
-            </section>
-            <section className="row">
-            <article className="col-sm-4">
+            <div className="row">
+
+            </div>
             <PostBox url="http://localhost:3001/api/posts" />
-            </article>
-          </section>
+          </div>
         </div>
+      </div>
       </div>
     );
   }

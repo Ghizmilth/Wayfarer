@@ -103,7 +103,7 @@ class Post extends Component {
             </form>
           </ModalFooter>
         </Modal>
-</div>
+        </div>
       </div>
     );
   }

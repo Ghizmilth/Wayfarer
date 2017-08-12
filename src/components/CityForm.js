@@ -73,10 +73,13 @@ hideModal = () => {
     return (
 
       <div className="modal-window">
-        <h1>The World is Your Playground</h1>
+
+
+        <h1>The World is Your Oyster</h1>
         <button className='btn btn-primary' onClick={this.openModal}>
           Add New City
         </button>
+
 
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
           <ModalHeader>
