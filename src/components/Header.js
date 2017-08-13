@@ -34,31 +34,7 @@ class Header extends Component {
               <h2>Wayfarer</h2>
             </article>
           </section>
-          <div>
-            <form onSubmit={this.handleLogin}>
-              <input
-                type="text"
-                placeholder="username"
-                value={this.state.username}
-                onChange={this.handleUsernameChange}
-              />
-              <input
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}
-              />
-              <button type="submit" value="login">
-                Login
-              </button>
-            </form>
-            <Link role="button" to="signup">
-              Signup
-            </Link>
-          </div>
-          <button className="logout-button" onClick={this.handleLogout}>
-            Logout
-          </button>
+  
         </div>
       </div>
     );
