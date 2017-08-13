@@ -51,7 +51,7 @@ class PostBox extends Component {
         console.log(err);
       });
     }
-  
+
 
 render() {
     return (

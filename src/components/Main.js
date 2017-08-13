@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import Header from "./Header";
 import $ from "jquery-ajax";
 import { Link } from "react-router";
-import { browserHistory } from "react-router";
+// import { browserHistory } from "react-router";
 import CityContainer from "./CityContainer";
 import PostBox from "./PostBox";
-
-import { Button, Card, Row, Col, Input } from "react-materialize";
+import PageContent from "./PageContent";
+import CityInfo from "./CityInfo";
+import CityList from "./CityList";
+// Card, Row, Col,
+import { Button, Input } from "react-materialize";
 import "../MainStyle.css";
 
 class Main extends Component {
@@ -60,58 +63,66 @@ class Main extends Component {
     return {
       isAuthenticated: false
     };
-  }
-
-  render() {
+    }
+  renderAuthenticationForm(){
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
-        <div className="MainPage">
-          <div>
-            <form onSubmit={this.handleSubmit}>
-              <Input
-                type="text"
-                placeholder="username"
-                value={this.state.username}
-                onChange={this.handleUsernameChange}
-              />
-              <Input
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}
-              />
-              <Button type="submit" value="login">
-                Login
-              </Button>
-            </form>
-            <Link role="button" to="signup">
-              Signup
-            </Link>
-          </div>
-          <Header handleSubmit={event => this.handleSubmit} />
-          <CityContainer />
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <Input
+              type="text"
+              placeholder="username"
+              value={this.state.username}
+              onChange={this.handleUsernameChange}
+            />
+            <Input
+              type="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.handlePasswordChange}
+            />
+            <Button type="submit" value="login">
+              Login
+            </Button>
+          </form>
+          <Link role="button" to="signup">
+            Signup
+          </Link>
         </div>
       );
     } else {
       console.log("user is logged in");
       return (
-        <div>
-          <p>logged in</p>
-
+        <div className="authenticationForm">
           <div>
-            <CityContainer
-              isAuthenticated={this.state.isAuthenticated}
-              username={this.state.username}
-              id={this.state.id}
-            />
-            <Button className="logout-button" onClick={this.handleLogout}>
-              Logout
-            </Button>
+            <p>logged in</p>
           </div>
+          <Button className="logout-button" onClick={this.handleLogout}>
+            Logout
+          </Button>
         </div>
+
+
       );
     }
+  }
+  render() {
+    let AuthFormContent = this.renderAuthenticationForm();
+    return (
+      <div className="main">
+        { AuthFormContent }
+
+        <Header handleSubmit={event => this.handleSubmit} />
+        <PageContent />
+        <CityContainer
+          isAuthenticated={this.state.isAuthenticated}
+          username={this.state.username}
+          id={this.state.id}/>
+        <CityInfo />
+        <PostBox />
+      </div>
+    )
   }
 }
 
