@@ -62,63 +62,58 @@ class Main extends Component {
     return {
       isAuthenticated: false
     };
-    }
-  renderAuthenticationForm(){
+   }
+  render() {
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <Input
-              type="text"
-              placeholder="username"
-              value={this.state.username}
-              onChange={this.handleUsernameChange}
-            />
-            <Input
-              type="password"
-              placeholder="password"
-              value={this.state.password}
-              onChange={this.handlePasswordChange}
-            />
-            <Button type="submit" value="login">
-              Login
-            </Button>
-          </form>
-          <Link role="button" to="signup">
-            Signup
-          </Link>
+        <div className="MainPage">
+          <div className="row container">
+            <div className=""
+            <form onSubmit={this.handleSubmit}>
+              <Input
+                type="text"
+                placeholder="username"
+                value={this.state.username}
+                onChange={this.handleUsernameChange}
+              />
+              <Input
+                type="password"
+                placeholder="password"
+                value={this.state.password}
+                onChange={this.handlePasswordChange}
+              />
+              <Button type="submit" value="login">
+                Login
+              </Button>
+            </form>
+            <Link role="button" to="signup">
+              Signup
+            </Link>
+          </div>
+          <Header handleSubmit={event => this.handleSubmit} />
+          <CityContainer />
         </div>
       );
     } else {
       console.log("user is logged in");
       return (
-        <div className="authenticationForm">
-          <div>
-            <p>logged in</p>
+        <div>
+          <p>logged in</p>
+
+          <div classNamer="col">
+            <CityContainer
+              isAuthenticated={this.state.isAuthenticated}
+              username={this.state.username}
+              id={this.state.id}
+            />
+            <Button className="logout-button" onClick={this.handleLogout}>
+              Logout
+            </Button>
           </div>
-          <Button className="logout-button" onClick={this.handleLogout}>
-            Logout
-          </Button>
         </div>
       );
     }
-  }
-  render() {
-    let AuthFormContent = this.renderAuthenticationForm();
-    return (
-      <div className="main">
-        { AuthFormContent }
-        <Header handleSubmit={event => this.handleSubmit} />
-        <PageContent />
-        <CityContainer
-          isAuthenticated={this.state.isAuthenticated}
-          username={this.state.username}
-          id={this.state.id}/>
-        <CityInfo />
-        <PostBox url='http://localhost:3001/api/cities/posts/' defaultCityId='1'/>
-      </div>
-    )
   }
 }
 

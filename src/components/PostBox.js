@@ -108,13 +108,19 @@ class PostBox extends Component {
   render() {
     return (
       <div className="PostBox">
+        <div className="container">
+         <div className="row">
           <h2 >Comment:</h2>
-        <PostList
-          loadPostsFromServer = {this.loadPostsFromServer}
-          onPostDelete={this.handlePostDelete}
-          data={this.state.data} />
-        <PostForm onPostSubmit={this.handleSubmit}/>
+          <PostForm onPostSubmit={ this.handleSubmit }/>
+         </div>
+         <div className="row">
+          <PostList
+            loadPostsFromServer = {this.loadPostsFromServer}
+            onPostDelete={ this.handlePostDelete }
+            data={ this.state.data } />
+         </div>
       </div>
+     </div>
     );
   }
 }
