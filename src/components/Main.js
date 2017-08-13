@@ -69,7 +69,6 @@ class Main extends Component {
       return (
         <div className="MainPage">
           <div className="row container">
-            <div className=""
             <form onSubmit={this.handleSubmit}>
               <Input
                 type="text"
