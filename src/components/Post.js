@@ -47,43 +47,7 @@ class Post extends Component {
     return (
 
       <div className="post">
-        <form id="{this.state._id}-update" action="#" onSubmit="PostUpdateHandleSubmit(this.state._id)" method="PUT" className="post-update-form" name="{this.state.id._id}-update">
-          <div className="col-md-10 col-md-offset-1">
-            <div className="panel panel-default">
-              <div className="panel-body">
-                <div className='row'>
-                  <div className="col-md-3 col-xs-12">
-                    <img src="images/user/UserImg.jpg" alt="post image" className="postData" />
-                  </div>
-                  <div className="col-md-9 col-xs-12">
-                    <ul className="list-group">
-                      <li className="list-group-item">
-
-                        <span id="{this.state._Id}-title" className='postTitleData'>{this.state.title}</span>
-                        <span id="{this.state._Id}-title-input-span" className='postInput'>
-                          <input id="{this.state._Id}-title-input" type="text" name="title" value="{this.state.title}" size="{this.state.title.length}" required />
-                        </span>
-                      </li>
-                      <li className="list-group-item">
-                        <span id="{this.state._Id}-text" className='postTextData'>{this.state.text}</span>
-                        <span id="{this.state._Id}-text-input-span" className='postInput'>
-                          <input id="{this.state._Id}-text-input" type="text" name="text" size="{this.state.text.length}" value="{post.text}" required />
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className='row'>
-                  <div className='panel-footer'>
-                    <button className='btn btn-primary del-post pull-right' onClick={this.deleteComment}>Delete Event</button>
-                    <button className='btn btn-primary edit-post pull-right'>Edit Event</button>
-                    <button className='btn btn-primary save-post pull-right'>Save Changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+      
 
       <div className="modal-window">
         <button className="btn btn-primary" onClick={this.openModal}>
