@@ -38,19 +38,19 @@ handleDescriptionChange(e) {
 }
 
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.hideModal();
-    let name = this.state.name.trim();
-    let imageURL = this.state.imageURL.trim();
-    let description = this.state.description.trim();
-    if (!name || !imageURL || !description) {
-      return;
-    }
-    this.props.onCitySubmit({ name: name, imageURL: imageURL, description: description });
-    this.setState({name: "", imageURL: "", description: ""});
-
+handleSubmit(e) {
+  e.preventDefault();
+  this.hideModal();
+  let name = this.state.name.trim();
+  let imageURL = this.state.imageURL.trim();
+  let description = this.state.description.trim();
+  if (!name || !imageURL || !description) {
+    return;
   }
+  this.props.onCitySubmit({ name: name, imageURL: imageURL, description: description });
+  this.setState({name: "", imageURL: "", description: ""});
+
+}
 
 //opens our modal
 openModal = () => {

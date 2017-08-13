@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import Header from "./Header";
 import $ from "jquery-ajax";
 import { Link } from "react-router";
-import { browserHistory } from "react-router";
+// import { browserHistory } from "react-router";
 import CityContainer from "./CityContainer";
 import PostBox from "./PostBox";
-
-import { Button, Card, Row, Col, Input } from "react-materialize";
+import PageContent from "./PageContent";
+import CityInfo from "./CityInfo";
+// Card, Row, Col,
+import { Button, Input } from "react-materialize";
 import "../MainStyle.css";
 
 class Main extends Component {
@@ -60,14 +62,14 @@ class Main extends Component {
     return {
       isAuthenticated: false
     };
-  }
-
+   }
   render() {
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
         <div className="MainPage">
-          <div>
+          <div className="row container">
+            <div className=""
             <form onSubmit={this.handleSubmit}>
               <Input
                 type="text"

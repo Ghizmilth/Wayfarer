@@ -128,6 +128,24 @@ router.put('/cities/:id', function(req, res) {
   });
 });
 
+//city posts
+router.get('/cities/posts/:id', function(req, res) {
+  db.City.findById(req.params.id, function(err, city) {
+    if (err) {
+      res.status(500).send(err);
+    }
+    return (
+      db.Post.find({city:city}, function(err, posts) {
+        if (err) {
+          res.status(500).send(err);
+        }
+        return res.json(posts);
+      })
+    );
+  });
+});
+
+
 //delete city
 router.delete('/cities/:id', function(req, res) {
   db.City.findOneAndRemove({ _id: req.params.id }, function(err, foundCity) {

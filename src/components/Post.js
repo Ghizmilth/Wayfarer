@@ -16,8 +16,7 @@ class Post extends Component {
       toBeUpdated: false,
       title: "",
       text: "",
-      user: "",
-      text: ""
+      user: ""
     };
     this.deletePost = this.deletePost.bind(this);
   }
@@ -48,7 +47,7 @@ class Post extends Component {
     return (
 
       <div className="post">
-        <form id="{this.state._id}-update" action="#" onsubmit="PostUpdateHandleSubmit(this.state._id)" method="PUT" className="post-update-form" name="{this.state.id._id}-update">
+        <form id="{this.state._id}-update" action="#" onSubmit="PostUpdateHandleSubmit(this.state._id)" method="PUT" className="post-update-form" name="{this.state.id._id}-update">
           <div className="col-md-10 col-md-offset-1">
             <div className="panel panel-default">
               <div className="panel-body">
@@ -103,8 +102,8 @@ class Post extends Component {
             </form>
           </ModalFooter>
         </Modal>
-        </div>
       </div>
+    </div>
     );
   }
 }
