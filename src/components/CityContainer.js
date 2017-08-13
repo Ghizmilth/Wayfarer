@@ -1,32 +1,20 @@
 import React, { Component } from "react";
-import PostBox from "./PostBox";
-import CityForm from "./CityForm";
-import CityInfo from "./CityInfo";
+import CityList from "./CityList";
 import "../MainStyle.css";
 
 class CityContainer extends Component {
-  render() {
-    return (
-      <div className="city-main">
-        <div className="container">
-          <section className="row">
-          <article className="col-sm-4">
-          <CityForm />
-          </article>
-          </section>
-          <section>
-            <article className="col-sm-4">
-            <CityInfo />
-            </article>
-            </section>
-            <section className="row">
-            <article className="col-sm-4">
-            <PostBox url="http://localhost:3001/api/posts" />
-            </article>
-          </section>
+render() {
+  return (
+    <div className="CityContainer">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12">
+            <CityList />
+          </div>
         </div>
       </div>
-    );
+    </div>
+   );
   }
 }
 

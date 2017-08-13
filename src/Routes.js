@@ -1,6 +1,5 @@
 import React from "react";
 import { Route } from "react-router";
-import PostBox from "./components/PostBox";
 import Signup from "./components/Signup";
 import Main from "./components/Main";
 

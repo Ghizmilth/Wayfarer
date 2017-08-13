@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import "../MainStyle.css";
 import axios from 'axios';
-import CityForm from './CityForm'
-
-
-
+import CityListItem from './CityListItem'
+import CityForm from "./CityForm";
 
 class CityList extends Component {
   constructor(props) {
@@ -56,11 +54,10 @@ class CityList extends Component {
      });
 }
 
-
-
 render() {
   return(
-    <div>
+    <div className="CityList">
+      <CityListItem />
       <CityForm onCitySubmit={this.handleSubmit}/>
     </div>
   )
