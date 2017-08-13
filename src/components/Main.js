@@ -7,7 +7,6 @@ import CityContainer from "./CityContainer";
 import PostBox from "./PostBox";
 import PageContent from "./PageContent";
 import CityInfo from "./CityInfo";
-import CityList from "./CityList";
 // Card, Row, Col,
 import { Button, Input } from "react-materialize";
 import "../MainStyle.css";
@@ -102,8 +101,6 @@ class Main extends Component {
             Logout
           </Button>
         </div>
-
-
       );
     }
   }
@@ -112,7 +109,6 @@ class Main extends Component {
     return (
       <div className="main">
         { AuthFormContent }
-
         <Header handleSubmit={event => this.handleSubmit} />
         <PageContent />
         <CityContainer
@@ -120,7 +116,7 @@ class Main extends Component {
           username={this.state.username}
           id={this.state.id}/>
         <CityInfo />
-        <PostBox />
+        <PostBox url='http://localhost:3001/api/cities/posts/' defaultCityId='1'/>
       </div>
     )
   }

@@ -16,8 +16,7 @@ class Post extends Component {
       toBeUpdated: false,
       title: "",
       text: "",
-      user: "",
-      text: ""
+      user: ""
     };
     this.deletePost = this.deletePost.bind(this);
   }
@@ -103,8 +102,8 @@ class Post extends Component {
             </form>
           </ModalFooter>
         </Modal>
-</div>
       </div>
+    </div>
     );
   }
 }

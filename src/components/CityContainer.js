@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PostBox from "./PostBox";
 import CityList from "./CityList";
 import "../MainStyle.css";
 
