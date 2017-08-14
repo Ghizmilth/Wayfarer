@@ -8,7 +8,10 @@ import "../MainStyle.css";
 class PostBox extends Component {
   constructor(props) {
     super();
-    this.state = { data: [] };
+    this.state = {
+      data: [],
+      cityId: this.props.defaultCityId
+    };
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
@@ -39,35 +42,35 @@ class PostBox extends Component {
   }
 
   loadPostsFromServer() {
-      let posts_list = [
-        {
-          _id:1,
-          title: 'This place rocks!',
-          text: 'omg my favorite place',
-          user: {_id:23,username:'Jed'},
-          city: {_id:45,name:'Jedcity'}
-        },
-        {
-          _id:2,
-          title: 'Tattooed offal heirloom lumbersexual',
-          text: 'Hexagon mumblecore tilde bushwick.',
-          user: {_id:34,username:'mami'},
-          city: {_id:33,name:'Miami'}
-        },
-        {
-          _id:3,
-          title: 'Cold pressed health goth',
-          text: 'Shoreditch PBR&B celiac, ethical jean shorts 90s neutra slow-carb.',
-          user: {_id:89,username:'moron'},
-          city: {_id:78,name:'jerksVille'}
-        }
-      ];
-      this.setState({data:posts_list})
+      // let posts_list = [
+      //   {
+      //     _id:1,
+      //     title: 'This place rocks!',
+      //     text: 'omg my favorite place',
+      //     user: {_id:23,username:'Jed'},
+      //     city: {_id:45,name:'Jedcity'}
+      //   },
+      //   {
+      //     _id:2,
+      //     title: 'Tattooed offal heirloom lumbersexual',
+      //     text: 'Hexagon mumblecore tilde bushwick.',
+      //     user: {_id:34,username:'mami'},
+      //     city: {_id:33,name:'Miami'}
+      //   },
+      //   {
+      //     _id:3,
+      //     title: 'Cold pressed health goth',
+      //     text: 'Shoreditch PBR&B celiac, ethical jean shorts 90s neutra slow-carb.',
+      //     user: {_id:89,username:'moron'},
+      //     city: {_id:78,name:'jerksVille'}
+      //   }
+      // ];
+      // this.setState({data:posts_list})
 
-    // axios.get(`${this.props.url}{this.}).then(res => {
-    //   console.log(res.data)
-    //   this.setState({ data: res.data.post });
-    // })
+    axios.get(`${this.props.url}${this.state.postObjId}`).then(res => {
+      console.log(res.data)
+      this.setState({ data: res.data.post });
+    })
   }
 
   handleSubmit(e) {
