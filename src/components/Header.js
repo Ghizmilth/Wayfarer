@@ -32,7 +32,14 @@ class Header extends Component {
           <div className="col-md-12 header-text">
             <h1>Wayfarer</h1>
           </div>
-
+          <div className="topnav" id="myTopnav">
+            <a id="profile" href="/user">
+              Profile
+            </a>
+            <a id="signup" href="/signup">
+              Sign Up
+            </a>
+          </div>
         </div>
       </div>
     );

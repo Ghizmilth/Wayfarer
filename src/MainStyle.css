@@ -1,10 +1,9 @@
 /*This is for main body*/
 
-html, body {
+html,
+body {
   height: 100%;
-
 }
-
 
 body {
   margin: 0;
@@ -18,12 +17,11 @@ body {
 }
 
 .body-image {
-
 }
 
 /*This is for  header bar*/
 .nav-bar {
-  background-color: #88BBD6;
+  background-color: #88bbd6;
   text-align: center;
   color: white;
   height: 150px;
@@ -37,7 +35,7 @@ body {
 
 .move-right {
   float: right;
-  height: 45px;
+  /*height: 45px;*/
   width: auto;
 }
 
@@ -57,7 +55,6 @@ body {
   height: 1000px;
   border-radius: 5px;
   width: 135%;
-
 }
 
 .city-list-title {
@@ -72,14 +69,16 @@ body {
 
 .add-city-bttn {
   border-radius: 60%;
-  background-color: #F7882F;
-  border: #6B7A8F;
+  background-color: #f7882f;
+  border: #6b7a8f;
 }
 
 .image-splash {
   padding: 400px;
-  margin-top: 0%;
+  margin-top: -4.6%;
   display: inline-block;
+  z-index: -1;
+
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -104,7 +103,6 @@ body {
 .list-item {
   margin: 20px;
   padding: 10px;
-
 }
 
 .PostList {
@@ -115,7 +113,21 @@ body {
   padding: 5px;
 }
 
-
 h1 {
-font-size: 64px;
+  font-size: 64px;
+  margin-left: 65%;
+}
+.topnav {
+  font-size: 25px;
+  text-align: left;
+  margin-left: 10px;
+}
+#profile {
+  margin-left: 5px;
+}
+#signup {
+  margin-left: 15px;
+}
+.splash-login {
+  margin-left: 18%;
 }
