@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../MainStyle.css";
 import {
   Modal,
   ModalHeader,
@@ -75,9 +74,9 @@ hideModal = () => {
       <div className="modal-window">
 
 
-        <h1>The World is Your Oyster</h1>
-        <button className='btn btn-primary' onClick={this.openModal}>
-          Add New City
+
+        <button className='btn btn-primary add-city-bttn' onClick={this.openModal}>
+          +
         </button>
 
 
