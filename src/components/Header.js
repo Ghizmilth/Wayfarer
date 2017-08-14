@@ -28,9 +28,9 @@ class Header extends Component {
   render() {
     return (
       <div className="nav-bar">
-        <div className="container">
-          <div className="col">
-            <h2>Wayfarer</h2>
+        <div className="container row">
+          <div className="col-md-12 header-text">
+            <h1>Wayfarer</h1>
           </div>
 
         </div>

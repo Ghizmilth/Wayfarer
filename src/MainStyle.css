@@ -1,26 +1,38 @@
 /*This is for main body*/
 
+html, body {
+  height: 100%;
+
+}
+
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   text-align: center;
-
+  background-size: cover;
+  background-color: #e9e9e9;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
+.body-image {
+
+}
 
 /*This is for  header bar*/
 .nav-bar {
-  background-color: #6B7A8F;
+  background-color: #88BBD6;
   text-align: center;
   color: white;
+  height: 150px;
 }
 
 .image-space {
-  height: 75%;
-  width: 75%;
+  height: 100%;
+  width: 100%;
   text-align: center;
-  margin-left: 10%;
 }
 
 .move-right {
@@ -30,7 +42,7 @@ body {
 }
 
 .content-body {
-  margin-top: 15%;
+  margin-top: 0;
 }
 .PostBox {
   text-align: left;
@@ -39,10 +51,17 @@ body {
 
 .city-main {
   text-align: left;
+  background-color: white;
+  margin-left: 20%;
+  margin-top: 30%;
+  height: 1000px;
+  border-radius: 5px;
+  width: 135%;
+
 }
 
 .city-list-title {
-  margin-top: 30px;
+  margin-top: 10%;
   margin-left: 20%;
 }
 
@@ -55,4 +74,48 @@ body {
   border-radius: 60%;
   background-color: #F7882F;
   border: #6B7A8F;
+}
+
+.image-splash {
+  padding: 400px;
+  margin-top: 0%;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: top;
+  background-image: url("https://images.unsplash.com/photo-1487581424120-18f3611a63e6?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1033&amp;q=80&amp;cs=tinysrgb&amp;crop=");
+}
+
+.post-text {
+  background-color: white;
+  font-size: 20px;
+}
+
+.post-footer {
+  background-color: white;
+  padding: 1%;
+  border: ;
+  width: 38%;
+  margin-left: 70%;
+  background-color: transparent;
+}
+
+.list-item {
+  margin: 20px;
+  padding: 10px;
+
+}
+
+.PostList {
+  margin: ;
+}
+
+.post-list-space {
+  padding: 5px;
+}
+
+
+h1 {
+font-size: 64px;
 }

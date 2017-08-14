@@ -84,8 +84,11 @@ class Splash extends Component {
               <h3>Sign Up</h3>
             </Link>
           </div>
-          <img src="https://bluemountainthyme.files.wordpress.com/2013/08/img_8131.jpg" />
+          <div className="row">
+            <div className="col-md-12 image-splash">
+            </div>
         </div>
+      </div>
       );
     } else {
       console.log("user is logged in");

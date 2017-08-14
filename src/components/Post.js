@@ -85,10 +85,11 @@ class Post extends Component {
         <div className="viewPost">
           <div className="postTitle">{this.props.title}</div>
           <div className="postContent">{this.props.text}</div>
-          <div className='panel-footer'>
-            <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete Post</button>
+          <div className='post-footer'>
+            <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete</button>
             <button className='btn btn-primary edit-post' onClick={this.editModeSwap}>Edit Post</button>
           </div>
+        <hr className="post-list-space" />
         </div>
       )
     } else {
@@ -98,7 +99,7 @@ class Post extends Component {
           <form action="#" onSubmit={this.handlePostUpdate} method="PUT" className="post-update-form">
             <input type="text" name="title" value={this.props.title} size={this.props.title.length} onChange={this.handleTitleChange} required />
             <input type="text" name="text" size={this.props.text.length} value={this.props.text} onChange={this.handleTextChange} required />
-            <div className='panel-footer'>
+            <div className='post-footer'>
               <button className='btn btn-primary del-post' onClick={this.openModal}>Delete Post</button>
               <button className='btn btn-primary save-post'>Save Changes</button>
             </div>
