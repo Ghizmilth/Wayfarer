@@ -10,7 +10,7 @@ class PostBox extends Component {
     super();
     this.state = {
       data: [],
-      cityId: this.props.defaultCityId
+      cityId: ''
     };
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
