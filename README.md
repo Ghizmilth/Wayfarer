@@ -20,9 +20,6 @@ Wayfarer is a MERN stack application that lets users share their travel experien
 - HTML5
 - Add-ons: Boostrap
 
-## Wireframes
--- https://raw.githubusercontent.com/sf-wdi-39/project-wayfarer/master/wireframes.png
-
 ## Collaborators
 - [Mary Northrup] (https://www.linkedin.com/in/mnorthrup/)
 - [Hidaner Ferrer] (https://www.linkedin.com/in/hidanerferrer/)
