@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../MainStyle.css";
 import axios from 'axios';
 import CityListItem from './CityListItem'
 import CityForm from "./CityForm";

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../MainStyle.css";
 import {
   Modal,
   ModalHeader,
@@ -47,7 +46,7 @@ class Post extends Component {
     return (
 
       <div className="post">
-      
+
 
       <div className="modal-window">
         <button className="btn btn-primary" onClick={this.openModal}>

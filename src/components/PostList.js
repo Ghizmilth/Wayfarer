@@ -1,25 +1,18 @@
 import React, { Component } from "react";
 import Post from "./Post";
-import "../MainStyle.css";
+
 
 class PostList extends Component {
-  constructor(props){
-    super(props)
-    this.printData()
-  }
-  printData(){
-    console.log(`QQ=${this.props.data}`)
-  }
   render() {
-    console.log(`QX=${this.props.data}`)
-    let postNodes = this.props.data.map(post => {
-      return <Post text={post.text} title={post.title} key={ post['_id'] } />
-    })
     return (
+      <div className="container">
+
       <div className="PostList">
-        {postNodes}
+        <Post onCommentDelete={this.props.onCommentDelete} />
       </div>
-    )
+    </div>
+
+    );
   }
 }
 

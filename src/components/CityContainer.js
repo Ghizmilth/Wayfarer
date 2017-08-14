@@ -1,20 +1,17 @@
 import React, { Component } from "react";
-import CityList from "./CityList";
-import "../MainStyle.css";
+import CityList from './CityList'
+import CityInfo from "./CityInfo";
+
 
 class CityContainer extends Component {
-render() {
-  return (
-    <div className="CityContainer">
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12">
-            <CityList />
-          </div>
-        </div>
+  render() {
+    return (
+      <div className="city-main">
+
+          <CityList />
+
       </div>
-    </div>
-   );
+    );
   }
 }
 

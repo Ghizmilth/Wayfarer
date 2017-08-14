@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import PostList from "./PostList";
 import PostForm from "./PostForm";
-import "../MainStyle.css";
+
 
 
 class PostBox extends Component {
