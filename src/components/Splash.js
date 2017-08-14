@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import $ from "jquery-ajax";
-import { Link } from "react-router";
-// import { browserHistory } from "react-router";
-import CityContainer from "./CityContainer";
-import PostBox from "./PostBox";
-import PageContent from "./PageContent";
-import CityInfo from "./CityInfo";
-// Card, Row, Col,
-import { Button, Input } from "react-materialize";
 import "../MainStyle.css";
+import { Link } from "react-router";
+import CityList from "./CityList";
+import { Button, Input } from "react-materialize";
+import $ from "jquery-ajax";
 
-class Main extends Component {
+class Splash extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,7 +61,7 @@ class Main extends Component {
       console.log("user is not logged in");
       return (
         <div className="MainPage">
-          <Header handleSubmit={event => this.handleSubmit} />;
+          <Header handleSubmit={event => this.handleSubmit} />
           <div className="row container">
             <form onSubmit={this.handleSubmit}>
               <Input
@@ -89,7 +84,7 @@ class Main extends Component {
               <h3>Sign Up</h3>
             </Link>
           </div>
-          <CityContainer />
+          <img src="https://bluemountainthyme.files.wordpress.com/2013/08/img_8131.jpg" />
         </div>
       );
     } else {
@@ -99,11 +94,6 @@ class Main extends Component {
           <p>logged in</p>
 
           <div classNamer="col">
-            <CityContainer
-              isAuthenticated={this.state.isAuthenticated}
-              username={this.state.username}
-              id={this.state.id}
-            />
             <Button className="logout-button" onClick={this.handleLogout}>
               Logout
             </Button>
@@ -114,4 +104,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default Splash;
