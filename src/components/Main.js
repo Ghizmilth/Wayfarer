@@ -35,6 +35,7 @@ class Main extends Component {
         username: username,
         password: password
       }
+
     }).then(res => {
       console.log("res is ", res);
       this.setState({isAuthenticated: true, id: res._id});
@@ -42,6 +43,7 @@ class Main extends Component {
       console.log("oops!");
       console.log(err);
     });
+
   }
   handleLogout() {
     this.setState({isAuthenticated: false, id: ""});
@@ -53,8 +55,10 @@ class Main extends Component {
     this.setState({password: e.target.value});
   }
   getInitialState() {
+
     return {isAuthenticated: false};
   }
+
 
   render() {
     ///city context for posts
@@ -65,6 +69,7 @@ class Main extends Component {
       console.log("user is not logged in");
       return (
         <div className="MainPage">
+
           <nav>
             <article>
               <Header handleSubmit={event => this.handleSubmit}/>
@@ -103,6 +108,7 @@ class Main extends Component {
               </div>
             </div>
           </article>
+
 
         </div>
       );
