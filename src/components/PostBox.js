@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import PostList from "./PostList";
 import PostForm from "./PostForm";
+import $ from 'jquery-ajax';
 
 class PostBox extends Component {
   constructor(props) {
