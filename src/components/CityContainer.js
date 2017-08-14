@@ -7,9 +7,7 @@ class CityContainer extends Component {
   render() {
     return (
       <div className="city-main">
-
           <CityList />
-
       </div>
     );
   }

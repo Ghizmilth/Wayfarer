@@ -5,19 +5,50 @@ body {
   padding: 0;
   font-family: sans-serif;
   text-align: center;
+
 }
 
 
 /*This is for  header bar*/
 .nav-bar {
   background-color: #6B7A8F;
-
+  text-align: left;
+  color: #F7882F;
 }
 
 
-
-
 .image-space {
-  height: 120%;
-  width: 120%;
+  height: 75%;
+  width: 75%;
+  text-align: center;
+  margin-left: 10%;
+}
+
+.move-right {
+  float: right;
+  height: 45px;
+  width: auto;
+}
+
+
+.content-body {
+  margin-top: 15%;
+}
+.PostBox {
+  text-align: left;
+  margin-left: 15%;
+}
+
+.city-main {
+  text-align: left;
+}
+
+.city-list-title {
+  margin-top: 30px;
+  margin-left: 20%;
+}
+
+.city-list-add {
+  margin-top: 30px;
+  margin-left: 20%;
 }

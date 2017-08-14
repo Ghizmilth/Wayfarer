@@ -10,7 +10,6 @@ import PostBox from "./PostBox";
 
 import {Button, Card, Row, Col, Input} from "react-materialize";
 
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -61,56 +60,43 @@ class Main extends Component {
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
-          <div className="MainPage">
-          <div className="container">
-            <div className="row">
-              <div className="col">
-                <Header handleSubmit={event => this.handleSubmit}/>
-              </div>
+        <div className="MainPage">
+          <nav>
+            <article>
+              <Header handleSubmit={event => this.handleSubmit}/>
+            </article>
 
-
-              <div className="col-sm-4">
-                <div className="row">
-
+            <div>
+              <div className="move-right">
                 <form onSubmit={this.handleSubmit}>
-
-                    <div className="col-md-6">
-                      <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
-                    </div>
-                    <div className="col-md-6">
-                      <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-
-                    <Button type="submit" value="login">
-                      Login
-                    </Button>
-                    </div>
+                  <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
+                  <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+                  <Button type="submit" value="login">Login</Button>
                 </form>
-
-                  </div>
 
                 <Link role="button" to="signup">
                   Signup
                 </Link>
               </div>
             </div>
+          </nav>
 
-            <div className="row">
+          <article>
+            <div className="content-body">
               <PageContent/>
-              </div>
-              <div className="row">
-              <div className="col-sm-4">
+            </div>
+            <div className="row">
+              <div className="col-md-3">
                 <CityContainer/>
               </div>
-              <div className="col-sm-8">
+              <div className="col-md-9">
                 <CityInfo/>
                 <PostBox/>
               </div>
             </div>
-          </div>
+          </article>
 
         </div>
-
-
       );
     } else {
       console.log("user is logged in");

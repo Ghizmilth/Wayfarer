@@ -74,9 +74,9 @@ hideModal = () => {
       <div className="modal-window">
 
 
-
+        
         <button className='btn btn-primary' onClick={this.openModal}>
-          Add New City
+          +
         </button>
 
 

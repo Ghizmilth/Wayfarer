@@ -56,8 +56,12 @@ class CityList extends Component {
 render() {
   return(
     <div className="CityList">
+      <div className="city-list-title">
       <CityListItem />
+      </div>
+      <div className="city-list-add">
       <CityForm onCitySubmit={this.handleSubmit}/>
+      </div>
     </div>
   )
 }
