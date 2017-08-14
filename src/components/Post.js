@@ -46,6 +46,12 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
+        <h4>
+          {this.props.title}
+        </h4>
+        <p>
+          {this.props.text}
+        </p>
         <div className="modal-window">
           <button className="btn btn-primary" onClick={this.openModal}>
             Delete

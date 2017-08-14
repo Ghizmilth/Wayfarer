@@ -90,7 +90,7 @@ class Main extends Component {
           </div>
           <Header handleSubmit={event => this.handleSubmit} />
           <CityContainer />
-          <PostBox url={'localhost:3001/api/posts'} />
+          <PostBox url={'https://troubador-api.herokuapp.com/api/posts'} />
         </div>
       );
     } else {
@@ -99,7 +99,7 @@ class Main extends Component {
         <div>
           <p>logged in</p>
 
-          <div classNamer="col">
+          <div className="col">
             <CityContainer
               isAuthenticated={this.state.isAuthenticated}
               username={this.state.username}

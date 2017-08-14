@@ -37,23 +37,7 @@ class PostBox extends Component {
     // }
   }
 
-  loadPostsFromServer() {
-    $.ajax({
-      url: this.props.url,
-      method: 'GET',
-      headers: { 'Access-Control-Allow-Origin': '*' },
-      success: function(res) {
-        console.log('RESPONSE FROM AXIOS POST GET ALL: ', res);
-      },
-      error: function(a, b, c) {
-        console.log('ERR');
-        console.log(a);
-        console.log(b);
-        console.log(c);
-      }
-      //this.setState({ data: res.data.post });
-    });
-  }
+  loadPostsFromServer() {}
 
   handleSubmit(e) {
     console.log(e);
@@ -62,16 +46,16 @@ class PostBox extends Component {
     e._city = 'fake city data;'; // city_id
     let newPost = post.concat(e);
     this.setState({ data: newPost });
-    console.log(this.props.url);
+    console.log(`POST URL: ${this.props.url}/${e._id}`);
     axios
-      .post(this.props.url, e)
+      .post(`${this.props.url}/${e._id}`, e)
       .then(res => {
         console.log('RES:', res);
-        //this.setState({ data: res });
+        this.setState({ data: res });
         //handleAddPost(res);
       })
       .catch(err => {
-        console.log('OOPSIES', err);
+        console.error('OOPSIES', err);
       });
   }
 
@@ -87,7 +71,9 @@ class PostBox extends Component {
   }
 
   componentDidMount() {
-    this.loadPostsFromServer();
+    axios.get(this.props.url).then(res => {
+      this.setState({ data: res.data });
+    });
   }
   render() {
     return (
