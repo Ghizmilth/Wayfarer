@@ -10,7 +10,6 @@ import PostBox from "./PostBox";
 
 import {Button, Card, Row, Col, Input} from "react-materialize";
 
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -61,44 +60,40 @@ class Main extends Component {
     ///city context for posts
     let postCityId = 1
     if (this.state.city){postCityId = this.state.city}
-
+    
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
-          <div className="MainPage">
-          <div className="container">
-            <div className="row">
+        <div className="MainPage">
+          <nav>
+            <article>
               <Header handleSubmit={event => this.handleSubmit}/>
-                <div className="col-sm-4">
-                <div className="row">
-                  <form onSubmit={this.handleSubmit}>
-                    <div className="col-md-6">
-                      <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
-                    </div>
-                    <div className="col-md-6">
-                      <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-                      <Button type="submit" value="login">
-                        Login
-                      </Button>
-                    </div>
-                </form>
+            </article>
 
-                  </div>
+            <div>
+              <div className="move-right">
+                <form onSubmit={this.handleSubmit}>
+                  <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
+                  <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+                  <Button type="submit" value="login">Login</Button>
+                </form>
 
                 <Link role="button" to="signup">
                   Signup
                 </Link>
               </div>
             </div>
+          </nav>
 
-            <div className="row">
+          <article>
+            <div className="content-body">
               <PageContent/>
-              </div>
-              <div className="row">
-              <div className="col-sm-4">
+            </div>
+            <div className="row">
+              <div className="col-md-3">
                 <CityContainer/>
               </div>
-              <div className="col-sm-8">
+              <div className="col-md-9">
                 <CityInfo/>
                 <PostBox
                   postUrl={'http://localhost:3001/api/posts/'}
@@ -107,11 +102,9 @@ class Main extends Component {
                   cityId={postCityId} />
               </div>
             </div>
-          </div>
+          </article>
 
         </div>
-
-
       );
     } else {
       console.log("user is logged in");
