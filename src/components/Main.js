@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Header from "./Header";
 import $ from "jquery-ajax";
-import { Link } from "react-router";
-// import { browserHistory } from "react-router";
+import {Link} from "react-router";
+import {browserHistory} from "react-router";
 import CityContainer from "./CityContainer";
+import PageContent from './PageContent';
+import CityInfo from './CityInfo';
 import PostBox from "./PostBox";
-import PageContent from "./PageContent";
-import CityInfo from "./CityInfo";
-// Card, Row, Col,
-import { Button, Input } from "react-materialize";
-import "../MainStyle.css";
+
+import {Button, Card, Row, Col, Input} from "react-materialize";
 
 class Main extends Component {
   constructor(props) {
@@ -36,60 +35,81 @@ class Main extends Component {
         username: username,
         password: password
       }
-    }).then(
-      res => {
-        console.log("res is ", res);
-        this.setState({ isAuthenticated: true, id: res._id });
-      },
-      err => {
-        console.log("oops!");
-        console.log(err);
-      }
-    );
+
+    }).then(res => {
+      console.log("res is ", res);
+      this.setState({isAuthenticated: true, id: res._id});
+    }, err => {
+      console.log("oops!");
+      console.log(err);
+    });
+
   }
   handleLogout() {
-    this.setState({ isAuthenticated: false, id: "" });
+    this.setState({isAuthenticated: false, id: ""});
   }
   handleUsernameChange(e) {
-    this.setState({ username: e.target.value });
+    this.setState({username: e.target.value});
   }
   handlePasswordChange(e) {
-    this.setState({ password: e.target.value });
+    this.setState({password: e.target.value});
   }
   getInitialState() {
-    return {
-      isAuthenticated: false
-    };
+
+    return {isAuthenticated: false};
   }
+
+
   render() {
+    ///city context for posts
+    let postCityId = 1
+    if (this.state.city){postCityId = this.state.city}
+    
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
         <div className="MainPage">
-          <Header handleSubmit={event => this.handleSubmit} />;
-          <div className="row container">
-            <form onSubmit={this.handleSubmit}>
-              <Input
-                type="text"
-                placeholder="username"
-                value={this.state.username}
-                onChange={this.handleUsernameChange}
-              />
-              <Input
-                type="password"
-                placeholder="password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}
-              />
-              <Button type="submit" value="login">
-                Login
-              </Button>
-            </form>
-            <Link role="button" to="signup">
-              <h3>Sign Up</h3>
-            </Link>
-          </div>
-          <CityContainer />
+
+          <nav>
+            <article>
+              <Header handleSubmit={event => this.handleSubmit}/>
+            </article>
+
+            <div>
+              <div className="move-right">
+                <form onSubmit={this.handleSubmit}>
+                  <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
+                  <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+                  <Button type="submit" value="login">Login</Button>
+                </form>
+
+                <Link role="button" to="signup">
+                  Signup
+                </Link>
+              </div>
+            </div>
+          </nav>
+
+          <article>
+            <div className="content-body">
+              <PageContent/>
+            </div>
+            <div className="row">
+              <div className="col-md-3">
+                <CityContainer/>
+              </div>
+              <div className="col-md-9">
+                <CityInfo/>
+                <PostBox
+                  postUrl={'http://localhost:3001/api/posts/'}
+                  citiesPostUrl={'http://localhost:3001/api/posts/cities/'}
+                  defaultCityId={1}
+                  cityId={postCityId} />
+              </div>
+            </div>
+          </article>
+
+
         </div>
       );
     } else {
@@ -97,13 +117,8 @@ class Main extends Component {
       return (
         <div>
           <p>logged in</p>
-
           <div classNamer="col">
-            <CityContainer
-              isAuthenticated={this.state.isAuthenticated}
-              username={this.state.username}
-              id={this.state.id}
-            />
+            <CityContainer isAuthenticated={this.state.isAuthenticated} username={this.state.username} id={this.state.id}/>
             <Button className="logout-button" onClick={this.handleLogout}>
               Logout
             </Button>
