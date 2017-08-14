@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import '../MainStyle.css';
+
+import React, {Component} from 'react';
 import {
   Modal,
   ModalHeader,

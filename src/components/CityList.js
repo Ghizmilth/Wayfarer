@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../MainStyle.css";
 import axios from 'axios';
 import CityListItem from './CityListItem'
 import CityForm from "./CityForm";
@@ -57,8 +56,12 @@ class CityList extends Component {
 render() {
   return(
     <div className="CityList">
+      <div className="city-list-title">
       <CityListItem />
+      </div>
+      <div className="city-list-add">
       <CityForm onCitySubmit={this.handleSubmit}/>
+      </div>
     </div>
   )
 }

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import '../MainStyle.css';
+
+import React, { Component } from "react";
+
 import {
   Modal,
   ModalHeader,
@@ -111,6 +112,7 @@ class Post extends Component {
     let postContent = this.renderPost();
     return (
       <div className="post">
+
 
         {postContent}
 

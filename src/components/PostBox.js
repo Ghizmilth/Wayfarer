@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import PostList from './PostList';
-import PostForm from './PostForm';
-import '../MainStyle.css';
-import $ from 'jquery-ajax';
+
+import React, { Component } from "react";
+import axios from "axios";
+import PostList from "./PostList";
+import PostForm from "./PostForm";
 
 class PostBox extends Component {
   constructor(props) {
@@ -124,19 +123,22 @@ class PostBox extends Component {
   render() {
     return (
       <div className="PostBox">
-        <div className="row">
-          <h2>Comment:</h2>
-          <PostForm onPostSubmit={this.handlePostSubmit} />
-        </div>
-        <div className="row">
+          <h2>What people say:</h2>
+          <div className="row">
+            <div className="col-sm-2">
+          <PostForm onPostSubmit={ this.handlePostSubmit }/>
+          </div>
+            <div className="col-sm-2">
           <PostList
             loadPostsFromServer={this.loadPostsFromServer}
             onPostDelete={this.handlePostDelete}
             onPostUpdate={this.handlePostUpdate}
             data={this.state.data}
           />
+            </div>
         </div>
-      </div>
+     </div>
+
     );
   }
 }
