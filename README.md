@@ -24,7 +24,8 @@ Wayfarer is a MERN stack application that lets users share their travel experien
 -- https://raw.githubusercontent.com/sf-wdi-39/project-wayfarer/master/wireframes.png
 
 ## Collaborators
-- [Mary Northrup!] (https://www.linkedin.com/in/mnorthrup "Mary Northrup")
+[Mary Northrup!](https://www.linkedin.com/in/mnorthrup "Mary Northrup")
+[Mary Northrup!] (https://www.linkedin.com/in/mnorthrup "Mary Northrup")
 - [Hidaner Ferrer] (https://www.linkedin.com/in/hidanerferrer/)
 - [Ryan Barrett] (https://www.linkedin.com/in/ryan-barrett-7a73b013a/)
 - [Dan Lombardino] (https://www.linkedin.com/in/ddino/)
