@@ -35,6 +35,7 @@ class Splash extends Component {
       res => {
         console.log("res is ", res);
         this.setState({ isAuthenticated: true, id: res._id });
+        window.location = "http://localhost:3000/login";
       },
       err => {
         console.log("oops!");
@@ -62,7 +63,7 @@ class Splash extends Component {
       return (
         <div className="MainPage">
           <Header handleSubmit={event => this.handleSubmit} />
-          <div className="row container">
+          <div className="row container splash-login">
             <form onSubmit={this.handleSubmit}>
               <Input
                 type="text"
@@ -80,15 +81,16 @@ class Splash extends Component {
                 Login
               </Button>
             </form>
-            <Link role="button" to="signup">
-              <h3>Sign Up</h3>
-            </Link>
           </div>
           <div className="row">
-            <div className="col-md-12 image-splash">
+            <div className="col-md-12 image-splash" />
+            <div className="row">
+              <div className="col-md-3 topic-1">a</div>
+              <div className="col-md-3 topic-2">b</div>
+              <div className="col-md-3 topic-3">c</div>
             </div>
+          </div>
         </div>
-      </div>
       );
     } else {
       console.log("user is logged in");
