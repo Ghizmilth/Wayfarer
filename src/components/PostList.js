@@ -14,7 +14,19 @@ class PostList extends Component {
     });
     return (
       <div className="PostList">
+
+        <div className="row container">
+
+          <div className="col-sm-3"></div>
+
+        <div className="col-sm-6 post-text">
         {postNodes}
+
+      </div>
+        <div className="col-sm-3">
+        </div>
+      </div>
+
       </div>
 
     );

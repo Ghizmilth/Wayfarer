@@ -57,7 +57,7 @@ class PostForm extends Component {
     return (
       <div className="modal-window">
         <button className="btn btn-primary" onClick={this.openModal}>
-          Add New Post
+          +
         </button>
 
         <Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
