@@ -57,6 +57,10 @@ class Main extends Component {
   }
 
   render() {
+    ///city context for posts
+    let postCityId = 1
+    if (this.state.city){postCityId = this.state.city}
+    
     if (this.state.isAuthenticated === false) {
       console.log("user is not logged in");
       return (
@@ -91,7 +95,11 @@ class Main extends Component {
               </div>
               <div className="col-md-9">
                 <CityInfo/>
-                <PostBox/>
+                <PostBox
+                  postUrl={'http://localhost:3001/api/posts/'}
+                  citiesPostUrl={'http://localhost:3001/api/posts/cities/'}
+                  defaultCityId={1}
+                  cityId={postCityId} />
               </div>
             </div>
           </article>

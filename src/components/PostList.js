@@ -1,14 +1,21 @@
-import React, { Component } from "react";
-import Post from "./Post";
 
+import React, { Component } from 'react';
+import Post from './Post';
+import '../MainStyle.css';
 
 class PostList extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    let postNodes = this.props.data.map(post => {
+      return <Post text={post.text} title={post.title} id={post['_id']} key={post['_id']} />;
+    });
     return (
-      <div className="container">
-        <Post onCommentDelete={this.props.onCommentDelete} />
-  
-    </div>
+      <div className="PostList">
+        {postNodes}
+      </div>
 
     );
   }
