@@ -84,6 +84,11 @@ class Splash extends Component {
           </div>
           <div className="row">
             <div className="col-md-12 image-splash" />
+            <div className="row">
+              <div className="col-md-3 topic-1">a</div>
+              <div className="col-md-3 topic-2">b</div>
+              <div className="col-md-3 topic-3">c</div>
+            </div>
           </div>
         </div>
       );
