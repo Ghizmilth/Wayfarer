@@ -24,16 +24,15 @@ body {
 /*This is for  header bar*/
 .nav-bar {
   background-color: #88BBD6;
-  text-align: left;
+  text-align: center;
   color: white;
+  height: 150px;
 }
 
 .image-space {
-  height: 75%;
-  width: 75%;
+  height: 100%;
+  width: 100%;
   text-align: center;
-  margin-left: 10%;
-
 }
 
 .move-right {
@@ -54,8 +53,11 @@ body {
   text-align: left;
   background-color: white;
   margin-left: 20%;
-  height: 600px;
+  margin-top: 30%;
+  height: 1000px;
   border-radius: 5px;
+  width: 135%;
+
 }
 
 .city-list-title {
@@ -102,4 +104,18 @@ body {
 .list-item {
   margin: 20px;
   padding: 10px;
+
+}
+
+.PostList {
+  margin: ;
+}
+
+.post-list-space {
+  padding: 5px;
+}
+
+
+h1 {
+font-size: 64px;
 }

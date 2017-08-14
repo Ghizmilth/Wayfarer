@@ -126,16 +126,16 @@ class PostBox extends Component {
       <div className="PostBox">
           <h2>What people say:</h2>
           <div className="row">
-            <div className="col-sm-12">
+            <div className="col-md-12">
           <PostForm onPostSubmit={ this.handlePostSubmit }/>
           </div>
-            <div className="col-sm-12 list-item">
+            <div className="col-md-12 list-item">
           <PostList
             loadPostsFromServer={this.loadPostsFromServer}
             onPostDelete={this.handlePostDelete}
             onPostUpdate={this.handlePostUpdate}
             data={this.state.data}
-          />
+          /><br></br>
             </div>
         </div>
      </div>

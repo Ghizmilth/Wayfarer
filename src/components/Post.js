@@ -89,6 +89,7 @@ class Post extends Component {
             <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete</button>
             <button className='btn btn-primary edit-post' onClick={this.editModeSwap}>Edit Post</button>
           </div>
+        <hr className="post-list-space" />
         </div>
       )
     } else {

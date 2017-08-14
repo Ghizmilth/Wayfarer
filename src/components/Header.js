@@ -29,13 +29,8 @@ class Header extends Component {
     return (
       <div className="nav-bar">
         <div className="container row">
-
-          <div className="col-md-9">
-            <h2>Wayfarer</h2>
-          </div>
-
-          <div className="col-md-3">
-            <p>Loggin will be here</p>
+          <div className="col-md-12 header-text">
+            <h1>Wayfarer</h1>
           </div>
 
         </div>
