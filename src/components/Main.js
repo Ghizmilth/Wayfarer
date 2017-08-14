@@ -68,25 +68,18 @@ class Main extends Component {
           <div className="MainPage">
           <div className="container">
             <div className="row">
-
-                <Header handleSubmit={event => this.handleSubmit}/>
-
-
-
-              <div className="col-sm-4">
+              <Header handleSubmit={event => this.handleSubmit}/>
+                <div className="col-sm-4">
                 <div className="row">
-
-                <form onSubmit={this.handleSubmit}>
-
+                  <form onSubmit={this.handleSubmit}>
                     <div className="col-md-6">
                       <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
                     </div>
                     <div className="col-md-6">
                       <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
-
-                    <Button type="submit" value="login">
-                      Login
-                    </Button>
+                      <Button type="submit" value="login">
+                        Login
+                      </Button>
                     </div>
                 </form>
 
@@ -107,7 +100,11 @@ class Main extends Component {
               </div>
               <div className="col-sm-8">
                 <CityInfo/>
-                <PostBox url={'https://troubador-api.herokuapp.com/api/posts'} defaultCityId={1} cityId={postCityId} />
+                <PostBox
+                  postUrl={'http://localhost:3001/api/posts/'}
+                  citiesPostUrl={'http://localhost:3001/api/posts/cities/'}
+                  defaultCityId={1}
+                  cityId={postCityId} />
               </div>
             </div>
           </div>

@@ -13,8 +13,9 @@ class PostBox extends Component {
       cityId: ''
     };
     this.handlePostDelete = this.handlePostDelete.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
+    this.handlePostUpdate = this.handlePostUpdate.bind(this);
 
     // switch (this.props.postObjType) {
     //   case 'city':
@@ -66,22 +67,22 @@ class PostBox extends Component {
       // ];
       // this.setState({data:posts_list})
 
-    axios.get(`${this.props.url}${this.state.postObjId}`).then(res => {
+    axios.get(`${this.props.citiesPostUrl}${this.props.cityId}`).then(res => {
       console.log(res.data)
-      this.setState({ data: res.data.post });
+      this.setState({ data: res.data.posts });
     })
   }
 
-  handleSubmit(e) {
+  handlePostSubmit(e) {
     console.log(e);
     let post = this.state.data;
     e._user = 'fake user data'; //  user_id
     e._city = 'fake city data;'; // city_id
     let newPost = post.concat(e);
     this.setState({ data: newPost });
-    console.log(`POST URL: ${this.props.url}/${e._id}`);
+    console.log(`POST URL: ${this.props.postUrl}/${e._id}`);
     axios
-      .post(`${this.props.url}/${e._id}`, e)
+      .post(`${this.props.postUrl}/${e._id}`, e)
       .then(res => {
         console.log('RES:', res);
         this.setState({ data: res });
@@ -94,7 +95,7 @@ class PostBox extends Component {
 
   handlePostDelete(id) {
     axios
-      .delete(`${this.props.url}/${id}`)
+      .delete(`${this.props.postUrl}/${id}`)
       .then(res => {
         console.log('Post Deleted');
       })
@@ -102,23 +103,36 @@ class PostBox extends Component {
         console.log(err);
       });
   }
-
+  handlePostUpdate(id, post) {
+    //sends the post id and new author/text to our api
+    $.ajax({
+      method: "put",
+      url: `${this.props.postUrl}/${id}`,
+      data: post
+    }).then(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
   componentDidMount() {
-    axios.get(this.props.url).then(res => {
-      this.setState({ data: res.data });
-    });
+    this.loadPostsFromServer()
   }
   render() {
     return (
       <div className="PostBox">
         <div className="row">
           <h2>Comment:</h2>
-          <PostForm onPostSubmit={this.handleSubmit} />
+          <PostForm onPostSubmit={this.handlePostSubmit} />
         </div>
         <div className="row">
           <PostList
             loadPostsFromServer={this.loadPostsFromServer}
             onPostDelete={this.handlePostDelete}
+            onPostUpdate={this.handlePostUpdate}
             data={this.state.data}
           />
         </div>

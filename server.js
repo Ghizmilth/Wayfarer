@@ -130,15 +130,6 @@ router.put('/cities/:id', function(req, res) {
   });
 });
 
-//city posts
-router.get('/cities/:city_id/posts', function(req, res) {
-  db.Post.find({ _city: req.param.city_id }, function(err, succ) {
-    if (err) {
-      console.log('did not find for  ' + req.params._city);
-    }
-    res.json({ posts: succ });
-  });
-});
 
 //delete city
 router.delete('/cities/:id', function(req, res) {
@@ -256,6 +247,16 @@ router.get('/posts/:id', function(req, res) {
       }
       res.json(post);
     });
+});
+
+//city posts
+router.get('/posts/cities/:id', function(req, res) {
+  db.Post.find({ _city: req.param.city_id }, function(err, succ) {
+    if (err) {
+      console.log('did not find for  ' + req.params._city);
+    }
+    res.json({ posts: succ });
+  });
 });
 
 //create post
