@@ -297,7 +297,7 @@ router.put('/posts/:id', function(req, res) {
 
 //delete post
 router.delete('/posts/:id', function(req, res) {
-  db.Post.findOneAndRemove(req.params.id, function(err, foundPost) {
+  db.Post.findByIdAndRemove(req.params.id, function(err, foundPost) {
     console.log('the post that deleted is ' + foundPost);
     res.json(foundPost);
   });

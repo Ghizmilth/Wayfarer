@@ -12,8 +12,7 @@ import {
 class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', text: '' };
-    this.state = { isOpen: false };
+    this.state = { title: '', text: '', isOpen: false };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

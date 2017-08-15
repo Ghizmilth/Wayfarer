@@ -10,10 +10,12 @@ class CityContainer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-3">
-          <CityList />
+              <CityList
+                cityId={this.props.cityId}
+                citiesUrl={this.props.citiesUrl} />
+            </div>
           </div>
-          </div>
-          </div>
+        </div>
       </div>
     );
   }

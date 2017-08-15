@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import UserAuth from "./UserAuth"
 
 //import { browserHistory } from "react-router";
 //import $ from "jquery-ajax";
@@ -33,6 +34,7 @@ class Header extends Component {
     console.log(this.state.isAuthenticated);
     return (
       <div className="nav-bar">
+
         <h1>Wayfarer</h1>
         <div className="topnav" id="myTopnav">
           <a id="profile" href="/user">
@@ -41,6 +43,12 @@ class Header extends Component {
           <a id="signup" href="/signup">
             Sign Up
           </a>
+      /* <UserAuth
+              handleSubmit={this.props.handleSubmit}
+              loginUrl={this.props.loginUrl}
+              setAuthState={this.setAuthState}
+              /> */
+
         </div>
       </div>
     );
