@@ -103,10 +103,10 @@ class Main extends Component {
               <PageContent />
             </div>
             <div className="row">
-              <div className="col-md-2 city-list-menu">
+              <div className="col-md-3 city-list-menu">
                 <CityContainer />
               </div>
-              <div className="col-md-10">
+              <div className="col-md-9">
                 <CityInfo />
                 <PostBox
                   postUrl={"http://localhost:3001/api/posts/"}
