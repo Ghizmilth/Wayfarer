@@ -56,25 +56,26 @@ class UserAuth extends Component {
       console.log("user is not logged in");
       return (
 
-        <div className="UserAuth push-right">
+        <div className="UserAuth">
+          <div className="move-right">
           <form onSubmit={this.handleSubmit}>
             <Input type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
             <Input type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
             <Button type="submit" value="login">Login</Button>
           </form>
-          <Link role="button" to="/signup">
-            Signup
-          </Link>
         </div>
+      </div>
 
       )
     } else {
       return (
         <div className="UserAuth">
           <p>logged in</p>
+          <div className="col">
           <Button className="logout-button" onClick={this.handleLogout}>
             Logout
           </Button>
+          </div>
         </div>
       )
     }

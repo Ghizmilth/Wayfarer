@@ -51,31 +51,32 @@ class Main extends Component {
             </Header>
           </article>
         </nav>
-        <div className="content-body">
-          {pageContentNode}
-        </div>
+        <article>
+          <div className="content-body">
+            {pageContentNode}
+          </div>
 
-        <div className="row">
-          <div className="col-md-3 city-list-menu">
+          <div className="row">
+            <div className="col-md-3 city-list-menu">
               <CityContainer
                 cityId={this.state.cityId}
-                  citiesUrl={this.props.route.config.citiesUrl} />
+                citiesUrl={this.props.route.config.citiesUrl} />
               </div>
               <div className="col-md-9">
-              <CityInfo
-                cityId={this.state.cityId}
-                userId={this.state.userId}
-                citiesUrl={this.props.route.config.citiesUrl} />
+                <CityInfo
+                  cityId={this.state.cityId}
+                  userId={this.state.userId}
+                  citiesUrl={this.props.route.config.citiesUrl} />
 
-              <PostBox
-                cityId={this.state.cityId}
-                postUrl={this.props.route.config.postUrl}
-                citiesPostUrl={this.props.route.config.citiesPostUrl}
-                userId={this.state.userId} />
+                <PostBox
+                  cityId={this.state.cityId}
+                  postUrl={this.props.route.config.postUrl}
+                  citiesPostUrl={this.props.route.config.citiesPostUrl}
+                  userId={this.state.userId} />
                 </div>
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
       );
     };
 

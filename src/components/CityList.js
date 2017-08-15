@@ -5,17 +5,18 @@ import CityForm from "./CityForm";
 
 class CityList extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {data: []};
     this.handleCityAdd = this.handleCityAdd.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.loadCityFromServer = this.loadCityFromServer.bind();
   }
 
-  loadCityFromServer(){
+  loadCitiesFromServer(){
     axios.get(this.props.citiesUrl)
     .then(res => {
-      this.setState({data: res.data.post})
+      this.setState({data: res.data})
+      console.log('x',res.data  )
+
     })
   }
 
@@ -42,7 +43,7 @@ class CityList extends Component {
   handleCityAdd(city) {
     axios.post(this.props.citiesUrl, {
       name: city.name,
-      imageURL: city.imageURL,
+      imageUrl: city.imageUrl,
       description: city.dedscription
     })
     .then(function (response) {
@@ -52,19 +53,24 @@ class CityList extends Component {
        console.log(error);
      });
 }
+componentDidMount() {
+  this.loadCitiesFromServer()
+}
 
 render() {
   let cityNodes = this.state.data.map(city => {
     return <CityListItem
+            citiesUrl={this.props.citiesUrl}
             name={city.name}
             description={city.description}
+            imageUrl={city.imageUrl}
             id={city['_id']}
             key={city['_id']} />;
   });
 
   return(
     <div className="CityList">
-      <div className="CityListItem">
+      <div className="CityListItemParent">
         {cityNodes}
       </div>
       <div className="city-list-add">

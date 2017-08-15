@@ -2,27 +2,18 @@ import React, { Component } from "react";
 
 class CityListItem extends Component {
   render() {
+    console.log(this.props)
+    let divImage = {
+      backgroundImage : `url(${this.props.imageUrl})`
+    };
+
     return (
-      <div>
-        <div className="container">
-              <div className="row">
-          <div className="city-list">
-
-      <h2>Select a Destination!</h2>
-      <hr></hr>
-      <br></br>
-
-      <ul>
-        <li>London</li>
-        <li>Gibraltar</li>
-        <li>Rome</li>
-      </ul>
-    </div>
-
-    </div>
-    </div>
-</div>
-)}
+      <div className="CityListItem" style={divImage} >
+        <a href={`/cities/${this.props.id}`} className="cityName">
+          <h2 className="cityName">{this.props.name}</h2>
+        </a>
+      </div>
+    )}
 }
 
 export default CityListItem;
