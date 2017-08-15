@@ -123,16 +123,46 @@ class Main extends Component {
       console.log("user is logged in");
       return (
         <div>
-          <p>logged in</p>
+          <div className="MainPage">
+            <nav>
+              <article>
+                <Header handleSubmit={event => this.handleSubmit} />
+                <div className="move-right">
+                  <p>logged in</p>
+                  <Button className="logout-button" onClick={this.handleLogout}>
+                    Logout
+                  </Button>
+                </div>
+              </article>
+            </nav>
+
+            <article>
+              <div className="content-body">
+                <PageContent />
+              </div>
+              <div className="row">
+                <div className="col-md-2 city-list-menu">
+                  <CityContainer />
+                </div>
+                <div className="col-md-10">
+                  <CityInfo />
+                  <PostBox
+                    postUrl={"http://localhost:3001/api/posts/"}
+                    citiesPostUrl={"http://localhost:3001/api/posts/cities/"}
+                    defaultCityId={1}
+                    cityId={postCityId}
+                  />
+                </div>
+              </div>
+            </article>
+          </div>
+
           <div classNamer="col">
             <CityContainer
               isAuthenticated={this.state.isAuthenticated}
               username={this.state.username}
               id={this.state.id}
             />
-            <Button className="logout-button" onClick={this.handleLogout}>
-              Logout
-            </Button>
           </div>
         </div>
       );
