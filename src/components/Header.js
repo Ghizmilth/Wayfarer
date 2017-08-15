@@ -6,13 +6,16 @@ import UserAuth from "./UserAuth"
 //import $ from "jquery-ajax";
 
 class Header extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     username: "",
-  //     password: ""
-  //   };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAuthenticated: false
+    };
+  }
+  // authCheck() {
+  //   this.state.isAuthenticated = this.props.isAuthenticated;
   // }
+  // authCheck()
   //
   // handleLogin() {
   //   this.props.handleSubmit(this.state.username, this.state.password);
@@ -27,18 +30,25 @@ class Header extends Component {
   //   this.setState({ password: e.target.value });
   // }
   render() {
+    this.state.isAuthenticated = this.props.isAuthenticated;
+    console.log(this.state.isAuthenticated);
     return (
       <div className="nav-bar">
-        <div className="container">
-          <div className="col">
-            <h2>Wayfarer</h2>
 
-            <UserAuth
+        <h1>Wayfarer</h1>
+        <div className="topnav" id="myTopnav">
+          <a id="profile" href="/user">
+            Profile
+          </a>
+          <a id="signup" href="/signup">
+            Sign Up
+          </a>
+      /* <UserAuth
               handleSubmit={this.props.handleSubmit}
               loginUrl={this.props.loginUrl}
               setAuthState={this.setAuthState}
-              />
-            </div>
+              /> */
+
         </div>
       </div>
     );

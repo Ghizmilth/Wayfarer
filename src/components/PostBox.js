@@ -132,7 +132,7 @@ class PostBox extends Component {
   render() {
     return (
       <div className="PostBox">
-          <h2>What people say:</h2>
+          <h2>What people are saying</h2>
           <div className="row">
             <div className="col-md-12">
           <PostForm onPostSubmit={ this.handlePostSubmit }/>

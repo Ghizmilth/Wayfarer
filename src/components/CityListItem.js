@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 class CityListItem extends Component {
   render() {
+
     console.log(this.props)
     let divImage = {
       backgroundImage : `url(${this.props.imageUrl})`
@@ -14,6 +15,7 @@ class CityListItem extends Component {
         </a>
       </div>
     )}
+
 }
 
 export default CityListItem;

@@ -86,13 +86,16 @@ class Post extends Component {
     if (!this.state.editMode){
       return(
         <div className="viewPost">
+
+          <hr />
           <div className="postTitle">{this.state.title}</div>
+          <hr />
           <div className="postContent">{this.state.text}</div>
           <div className='post-footer'>
             <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete</button>
             <button className='btn btn-primary edit-post' onClick={this.editModeSwap}>Edit Post</button>
           </div>
-        <hr className="post-list-space" />
+        <hr />
         </div>
       )
     } else {
@@ -107,6 +110,7 @@ class Post extends Component {
               <button className='btn btn-primary save-post'>Save Changes</button>
             </div>
           </form>
+
         </div>
       )
     }
