@@ -64,7 +64,6 @@ class Splash extends Component {
 
           <div className="row container splash-login-container">
             <div className="col-md-12 splash-login-form">
-
               <form onSubmit={this.handleSubmit}>
                 <Input
                   id="input1"
@@ -85,7 +84,6 @@ class Splash extends Component {
                 </Button>
               </form>
             </div>
-
           </div>
 
           <div className="row">

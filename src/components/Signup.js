@@ -29,7 +29,7 @@ class SignUp extends Component {
     }).then(
       res => {
         console.log("res is ", res);
-        browserHistory.push("/login");
+        browserHistory.push("/");
       },
       err => {
         console.log(err);
