@@ -1,36 +1,77 @@
 /*This is for main body*/
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   text-align: center;
-
+  background-size: cover;
+  background-color: #e9e9e9;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-
-/*This is for  header bar*/
-.nav-bar {
-  background-color: #6B7A8F;
-  text-align: center;
+a {
   color: white;
 }
 
-.image-space {
-  height: 75%;
-  width: 75%;
+h1 {
+  font-size: 72px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Supermercado One', cursive;
+}
+
+form {
+  padding: 50px;
+  color: black;
+}
+
+h2 {
+  font-family: 'Supermercado One', cursive;
+  color: #f27935;
+}
+
+h3 {
+  color: #f27935;
+  font-family: 'Supermercado One', cursive;
+}
+
+.body-image {
+}
+img {
+  border-radius: 10px;
+  border: 4px solid #34495e;
+}
+
+/*This is for  header bar*/
+.nav-bar {
+  background-color: #34495e;
   text-align: center;
-  margin-left: 10%;
+  color: #f27935;
+  height: 140px;
+}
+
+.image-space {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-left: 5%;
 }
 
 .move-right {
   float: right;
-  height: 45px;
+  /*height: 45px;*/
   width: auto;
 }
 
 .content-body {
-  margin-top: 15%;
+  margin-top: 0;
 }
 .PostBox {
   text-align: left;
@@ -39,20 +80,149 @@ body {
 
 .city-main {
   text-align: left;
+  background-color: white;
+  margin-left: 20%;
+  margin-top: 30%;
+  height: 1000px;
+  border-radius: 5px;
+  min-width: 300px;
+  max-width: 300px;
+}
+
+#login-button {
+  background-color: #f27935;
+  color: white;
 }
 
 .city-list-title {
-  margin-top: 30px;
-  margin-left: 20%;
+  margin-top: 5%;
+  text-align: left;
+}
+
+.city-list {
+  margin-left: ;
+  display: inline;
+}
+
+li {
+  list-style-type: none;
 }
 
 .city-list-add {
   margin-top: 30px;
   margin-left: 20%;
+  text-align: right;
 }
 
 .add-city-bttn {
-  border-radius: 60%;
-  background-color: #F7882F;
-  border: #6B7A8F;
+  border-radius: ;
+  background-color: #f7882f;
+  border: #6b7a8f;
+}
+
+.add-post-button {
+  border-radius: ;
+  background-color: #f7882f;
+  border: #6b7a8f;
+}
+
+.close-post-modal-bttn {
+  background-color: #f7882f;
+  border: #6b7a8f;
+}
+
+.del-post {
+  background-color: #95a5a6;
+}
+
+.image-splash {
+  padding: 450px;
+  margin-top: -22%;
+  display: inline-block;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: top;
+  background-image: url("https://images.unsplash.com/photo-1487581424120-18f3611a63e6?dpr=2&amp;auto=format&amp;fit=crop&amp;w=1500&amp;h=1033&amp;q=80&amp;cs=tinysrgb&amp;crop=");
+}
+
+.post-text {
+  background-color: white;
+  font-size: 20px;
+}
+
+.post-footer {
+  background-color: white;
+  padding: 1%;
+  border: ;
+  width: 38%;
+  margin-left: 70%;
+  background-color: transparent;
+}
+
+.list-item {
+  margin: 20px;
+  padding: 10px;
+}
+
+.PostList {
+  margin: ;
+}
+
+.post-list-space {
+  padding: 5px;
+}
+
+.topnav {
+  font-size: 20px;
+  text-align: left;
+  margin: -10px 0 0 5px;
+}
+#profile {
+  margin-left: 5px;
+}
+#signup {
+  margin-left: 15px;
+}
+
+.splash-login-container {
+  text-align: center;
+  z-index: 1000;
+  margin: auto;
+}
+
+#left-topic {
+  padding: 3px;
+  background-color: white;
+  width: 25%;
+  border-radius: 5px;
+}
+
+#middle-topic {
+  padding: 3px;
+  margin: 0px 5px 5px 40px;
+  background-color: white;
+  width: 25%;
+  border-radius: 5px;
+}
+
+#right-topic {
+  padding: 3px;
+  background-color: white;
+  margin-left: 40px;
+  width: 25%;
+  border-radius: 5px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+  width: 90%;
+  top: 60%;
+  margin: auto;
+  left: 5%;
 }
