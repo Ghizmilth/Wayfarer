@@ -48,6 +48,7 @@ class Main extends Component {
   }
   handleLogout() {
     this.setState({ isAuthenticated: false, id: "" });
+    window.location = "http://localhost:3000/";
   }
   handleUsernameChange(e) {
     this.setState({ username: e.target.value });
@@ -66,7 +67,7 @@ class Main extends Component {
       postCityId = this.state.city;
     }
 
-    if (this.state.isAuthenticated === false) {
+    if (this.state.isAuthenticated !== false) {
       console.log("user is not logged in");
       return (
         <div className="MainPage">
