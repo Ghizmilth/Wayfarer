@@ -19,9 +19,13 @@ class PostList extends Component {
               onPostUpdate={this.props.onPostUpdate} />;
     });
     return (
-      <div className="PostList">
+  <div className="PostList">
+     <div className="row container">
+        <div className="col-sm-8 post-text">
         {postNodes}
-      </div>
+        </div>
+     </div>
+ </div>
 
     );
   }

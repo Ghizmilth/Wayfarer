@@ -88,10 +88,11 @@ class Post extends Component {
         <div className="viewPost">
           <div className="postTitle">{this.state.title}</div>
           <div className="postContent">{this.state.text}</div>
-          <div className='panel-footer'>
-            <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete Post</button>
+          <div className='post-footer'>
+            <button className='btn btn-primary del-post' onClick={this.deletePost}>Delete</button>
             <button className='btn btn-primary edit-post' onClick={this.editModeSwap}>Edit Post</button>
           </div>
+        <hr className="post-list-space" />
         </div>
       )
     } else {
@@ -99,10 +100,9 @@ class Post extends Component {
 
         <div className="editPostForm">
           <form action="#" onSubmit={this.handlePostUpdate} method="PUT" className="post-update-form">
-            <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange}  />
-            <textarea name="text" onChange={this.handleTextChange} value={this.state.text}  />
-
-            <div className='panel-footer'>
+            <input type="text" name="title" value={this.state.title} size={this.state.title.length} onChange={this.handleTitleChange} required />
+            <input type="text" name="text" size={this.state.text.length} value={this.state.text} onChange={this.handleTextChange} required />
+            <div className='post-footer'>
               <button className='btn btn-primary del-post' onClick={this.openModal}>Delete Post</button>
               <button className='btn btn-primary save-post'>Save Changes</button>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import CityList from "./CityList";
+// import CityList from "./CityList";
 
 class UserProfile extends Component {
   render() {

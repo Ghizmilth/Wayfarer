@@ -3,6 +3,7 @@ import { Route } from "react-router";
 import Signup from "./components/Signup";
 import Main from "./components/Main";
 import UserProfile from "./components/UserProfile";
+import Splash from "./components/Splash";
 
 let config = {
  postUrl : 'http://localhost:3001/api/posts/',

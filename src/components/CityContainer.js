@@ -7,9 +7,15 @@ class CityContainer extends Component {
   render() {
     return (
       <div className="city-main">
-          <CityList
-            cityId={this.props.cityId}
-            citiesUrl={this.props.citiesUrl} />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <CityList
+                cityId={this.props.cityId}
+                citiesUrl={this.props.citiesUrl} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

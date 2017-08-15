@@ -1,14 +1,14 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Header from "./Header";
 import {Link} from "react-router";
 import {browserHistory} from "react-router";
 import CityContainer from "./CityContainer";
-import PageContent from './PageContent';
-import CityInfo from './CityInfo';
+import PageContent from "./PageContent";
+import CityInfo from "./CityInfo";
 import PostBox from "./PostBox";
 import UserAuth from "./UserAuth";
 
-import {Button, Card, Row, Col, Input} from "react-materialize";
+import { Button, Card, Row, Col, Input } from "react-materialize";
 
 class Main extends Component {
   constructor(props) {
@@ -50,17 +50,18 @@ class Main extends Component {
                 <UserAuth />
             </Header>
           </article>
-          {pageContentNode}
         </nav>
+        <div className="content-body">
+          {pageContentNode}
+        </div>
 
-        <article>
-          <div className="row">
-            <div className="col-md-3">
+        <div className="row">
+          <div className="col-md-3 city-list-menu">
               <CityContainer
                 cityId={this.state.cityId}
                   citiesUrl={this.props.route.config.citiesUrl} />
-            </div>
-            <div className="col-md-9">
+              </div>
+              <div className="col-md-9">
               <CityInfo
                 cityId={this.state.cityId}
                 userId={this.state.userId}
@@ -71,7 +72,7 @@ class Main extends Component {
                 postUrl={this.props.route.config.postUrl}
                 citiesPostUrl={this.props.route.config.citiesPostUrl}
                 userId={this.state.userId} />
-            </div>
+                </div>
           </div>
         </article>
       </div>
