@@ -135,7 +135,7 @@ class PostBox extends Component {
             onPostDelete={this.handlePostDelete}
             onPostUpdate={this.handlePostUpdate}
             data={this.state.data}
-          /><br></br>
+          />
             </div>
         </div>
      </div>

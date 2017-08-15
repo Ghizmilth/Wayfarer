@@ -16,27 +16,63 @@ body {
   background-repeat: no-repeat;
 }
 
+a {
+  color: white;
+}
+
+h1 {
+  font-size: 72px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Supermercado One', cursive;
+}
+
+form {
+  padding: 50px;
+  color: black;
+}
+
+h2 {
+font-family: 'Supermercado One', cursive;
+color: #f27935;
+}
+
+h3 {
+  color: #f27935;
+  font-family: 'Supermercado One', cursive;
+}
+
+
 .body-image {
+}
+img {
+  border-radius: 10px;
+  border: 4px solid #34495e;
 }
 
 /*This is for  header bar*/
 .nav-bar {
-  background-color: #88bbd6;
+  background-color: #34495e;
   text-align: center;
-  color: white;
-  height: 150px;
+  color: #f27935;
+  height: 140px;
 }
+
+
 
 .image-space {
   height: 100%;
   width: 100%;
   text-align: center;
+  margin-left: 5%;
 }
 
 .move-right {
   float: right;
   /*height: 45px;*/
   width: auto;
+  position: absolute;
+
 }
 
 .content-body {
@@ -54,31 +90,63 @@ body {
   margin-top: 30%;
   height: 1000px;
   border-radius: 5px;
-  width: 135%;
+  min-width: 300px;
+  max-width: 300px
+
+}
+
+#login-button {
+  background-color: #f27935;
+  color: white;
 }
 
 .city-list-title {
-  margin-top: 10%;
-  margin-left: 20%;
+  margin-top: 5%;
+  text-align: left;
+
+}
+
+.city-list {
+  margin-left: ;
+  display: inline;
+}
+
+li {
+  list-style-type: none;
 }
 
 .city-list-add {
   margin-top: 30px;
   margin-left: 20%;
+  text-align: right;
 }
 
 .add-city-bttn {
-  border-radius: 60%;
+  border-radius: ;
   background-color: #f7882f;
   border: #6b7a8f;
 }
 
+.add-post-button {
+  border-radius: ;
+  background-color: #f7882f;
+  border: #6b7a8f;
+}
+
+.close-post-modal-bttn{
+  background-color: #f7882f;
+  border: #6b7a8f;
+}
+
+.del-post {
+    background-color: #95a5a6;
+}
+
 .image-splash {
-  padding: 400px;
-  margin-top: -4.6%;
+  padding: 450px;
+  margin-top: -22%;
   display: inline-block;
   z-index: -1;
-
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -113,14 +181,12 @@ body {
   padding: 5px;
 }
 
-h1 {
-  font-size: 64px;
-  margin-left: 65%;
-}
+
 .topnav {
-  font-size: 25px;
+  font-size: 20px;
   text-align: left;
-  margin-left: 10px;
+  margin: -10px 0 0 5px;
+
 }
 #profile {
   margin-left: 5px;
@@ -128,26 +194,45 @@ h1 {
 #signup {
   margin-left: 15px;
 }
-.splash-login {
-  margin-left: 18%;
-}
-/*.topic-1 {
-  border: 4px solid black;
-  background-color: black;
-  color: white;
-  margin-left: 6%;
-  margin-top: -60px;
-}
-.topic-2 {
-  border: 4px solid black;
-  background-color: black;
-  color: white;
-  margin-left: 6%;
-}
-.topic-3 {
-  border: 4px solid black;
-  background-color: black;
-  color: white;
 
-  margin-left: 6%;*/
-/*}*/
+.splash-login-container {
+  text-align: center;
+  z-index: 1000;
+  margin: auto;
+}
+
+#left-topic {
+padding: 3px;
+  background-color: white;
+  width: 25%;
+  border-radius: 5px;
+}
+
+#middle-topic {
+	padding: 3px;
+	margin: 0px 5px 5px 40px;
+  background-color: white;
+  width: 25%;
+  border-radius: 5px;
+}
+
+#right-topic {
+	padding: 3px;
+  background-color: white;
+  margin-left: 40px;
+  width: 25%;
+  border-radius: 5px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+	width: 90%;
+	top: 60%;
+  margin: auto;
+  left: 5%;
+
+}

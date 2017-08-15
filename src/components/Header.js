@@ -28,10 +28,7 @@ class Header extends Component {
   render() {
     return (
       <div className="nav-bar">
-        <div className="container row">
-          <div className="col-md-12 header-text">
             <h1>Wayfarer</h1>
-          </div>
           <div className="topnav" id="myTopnav">
             <a id="profile" href="/user">
               Profile
@@ -40,7 +37,6 @@ class Header extends Component {
               Sign Up
             </a>
           </div>
-        </div>
       </div>
     );
   }
