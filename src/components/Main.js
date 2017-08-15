@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Header from "./Header";
-import {Link} from "react-router";
-import {browserHistory} from "react-router";
+import $ from "jquery-ajax";
+import { Link } from "react-router";
+import { browserHistory } from "react-router";
 import CityContainer from "./CityContainer";
 import PageContent from "./PageContent";
 import CityInfo from "./CityInfo";
 import PostBox from "./PostBox";
-import UserAuth from "./UserAuth";
 
 import { Button, Card, Row, Col, Input } from "react-materialize";
 
@@ -14,15 +14,16 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userId: this.props.params.userId || this.props.route.config.defaultUserId,
-      isAuthenticated: false,
-      cityId: this.props.params.id || this.props.route.config.defaultCityId
+      username: "",
+      password: "",
+      id: "",
+      isAuthenticated: false
     };
-    this.setAuthState = this.setAuthState.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
+    this.handleUsernameChange = this.handleUsernameChange.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
-
-   /* setAuthState(isAuth,userId){
-    this.setState({isAuthenticated:isAuth, userId:userId}); */
   handleSubmit(e) {
     e.preventDefault();
     let username = this.state.username;
@@ -57,23 +58,15 @@ class Main extends Component {
   }
   getInitialState() {
     return { isAuthenticated: false };
-
   }
 
-  renderPageContent() {
-    return(
-      <div className="PageContent">
-        <PageContent pageContext={this.props.route.config.pageContext} />
-      </div>
-      )
-    }
   render() {
+    ///city context for posts
+    let postCityId = 1;
+    if (this.state.city) {
+      postCityId = this.state.city;
+    }
 
-   /* let pageContentNode = null;
-    if (this.props.route.config.pageContext){
-      pageContentNode = this.renderPageContent();
-    } */
-    
     if (this.state.isAuthenticated !== false) {
       console.log("user is not logged in");
       return (
@@ -106,43 +99,23 @@ class Main extends Component {
             </div>
           </nav>
 
-    return (
-      <div className="MainPage">
-        <nav>
           <article>
-            <Header
-              handleSubmit={event => this.handleSubmit}
-              loginUrl={this.props.route.config.loginUrl}
-              setAuthState={this.setAuthState} >
-                <UserAuth />
-            </Header>
-          </article>
-        </nav>
-        <article>
-          <div className="content-body">
-            {pageContentNode}
-          </div>
-
-          <div className="row">
-            <div className="col-md-3 city-list-menu">
-              <CityContainer
-                cityId={this.state.cityId}
-                citiesUrl={this.props.route.config.citiesUrl} />
+            <div className="content-body">
+              <PageContent />
+            </div>
+            <div className="row">
+              <div className="col-md-3 city-list-menu">
+                <CityContainer />
               </div>
               <div className="col-md-9">
-                <CityInfo
-                  cityId={this.state.cityId}
-                  userId={this.state.userId}
-                  citiesUrl={this.props.route.config.citiesUrl} />
-
+                <CityInfo />
                 <PostBox
-                  cityId={this.state.cityId}
-                  postUrl={this.props.route.config.postUrl}
-                  citiesPostUrl={this.props.route.config.citiesPostUrl}
-                  userId={this.state.userId} />
-                </div>
+                  postUrl={"http://localhost:3001/api/posts/"}
+                  citiesPostUrl={"http://localhost:3001/api/posts/cities/"}
+                  defaultCityId={1}
+                  cityId={postCityId}
+                />
               </div>
-
             </div>
           </article>
         </div>
@@ -151,7 +124,6 @@ class Main extends Component {
       console.log("user is logged in");
       return (
         <div>
-
           <div className="MainPage">
             <nav>
               <article>
@@ -188,15 +160,13 @@ class Main extends Component {
                 </div>
               </div>
             </article>
-
           </div>
 
           <div classNamer="col" />
         </div>
-
       );
-    };
-
+    }
+  }
 }
 
 export default Main;
