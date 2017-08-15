@@ -21,7 +21,7 @@ body {
 
 /*This is for  header bar*/
 .nav-bar {
-  background-color: #88bbd6;
+  background-color: #34495e;
   text-align: center;
   color: white;
   height: 150px;
@@ -54,7 +54,7 @@ body {
   margin-top: 30%;
   height: 1000px;
   border-radius: 5px;
-  width: 135%;
+  width: 60%;
 }
 
 .city-list-title {
@@ -74,11 +74,10 @@ body {
 }
 
 .image-splash {
-  padding: 400px;
-  margin-top: -4.6%;
+  padding: 450px;
+  margin-top: -9.9%;
   display: inline-block;
   z-index: -1;
-
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -128,26 +127,53 @@ h1 {
 #signup {
   margin-left: 15px;
 }
-.splash-login {
-  margin-left: 18%;
-}
-/*.topic-1 {
-  border: 4px solid black;
-  background-color: black;
-  color: white;
-  margin-left: 6%;
-  margin-top: -60px;
-}
-.topic-2 {
-  border: 4px solid black;
-  background-color: black;
-  color: white;
-  margin-left: 6%;
-}
-.topic-3 {
-  border: 4px solid black;
-  background-color: black;
-  color: white;
+.splash-login-form {
+  text-align: center;
+  z-index: 1000;
+  margin: auto;
 
-  margin-left: 6%;*/
-/*}*/
+}
+
+
+.topic-boxes {
+
+
+  display: inline-block;
+  text-align: center;
+}
+
+#left-topic {
+padding: 3px;
+  background-color: white;
+  width: 20%;
+  border-radius: 5px;
+}
+
+#middle-topic {
+	padding: 3px;
+	margin: 0px 5px 5px 40px;
+  background-color: white;
+  width: 20%;
+  border-radius: 5px;
+}
+
+#right-topic {
+	padding: 3px;
+  background-color: white;
+  margin-left: 40px;
+  width: 20%;
+  border-radius: 5px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 1000;
+  padding: 5px;
+	width: 90%;
+	top: 60%;
+  margin: auto;
+  left: 5%;
+
+}
