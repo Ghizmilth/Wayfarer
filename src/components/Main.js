@@ -48,7 +48,7 @@ class Main extends Component {
   }
   handleLogout() {
     this.setState({ isAuthenticated: false, id: "" });
-    window.location = "http://localhost:3000/";
+    window.location = "/";
   }
   handleUsernameChange(e) {
     this.setState({ username: e.target.value });
@@ -73,7 +73,7 @@ class Main extends Component {
         <div className="MainPage">
           <nav>
             <article>
-              <Header handleSubmit={event => this.handleSubmit} />
+              <Header isAuthenticated={this.state.isAuthenticated} />
             </article>
 
             <div>
@@ -127,7 +127,7 @@ class Main extends Component {
           <div className="MainPage">
             <nav>
               <article>
-                <Header handleSubmit={event => this.handleSubmit} />
+                <Header isAuthenticated={this.state.isAuthenticated} />
                 <div className="move-right">
                   <p>logged in</p>
                   <Button className="logout-button" onClick={this.handleLogout}>
@@ -143,7 +143,11 @@ class Main extends Component {
               </div>
               <div className="row">
                 <div className="col-md-2 city-list-menu">
-                  <CityContainer />
+                  <CityContainer
+                    isAuthenticated={this.state.isAuthenticated}
+                    username={this.state.username}
+                    id={this.state.id}
+                  />
                 </div>
                 <div className="col-md-10">
                   <CityInfo />
@@ -158,13 +162,7 @@ class Main extends Component {
             </article>
           </div>
 
-          <div classNamer="col">
-            <CityContainer
-              isAuthenticated={this.state.isAuthenticated}
-              username={this.state.username}
-              id={this.state.id}
-            />
-          </div>
+          <div classNamer="col" />
         </div>
       );
     }

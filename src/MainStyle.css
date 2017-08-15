@@ -33,15 +33,14 @@ form {
 }
 
 h2 {
-font-family: 'Supermercado One', cursive;
-color: #f27935;
+  font-family: 'Supermercado One', cursive;
+  color: #f27935;
 }
 
 h3 {
   color: #f27935;
   font-family: 'Supermercado One', cursive;
 }
-
 
 .body-image {
 }
@@ -58,8 +57,6 @@ img {
   height: 140px;
 }
 
-
-
 .image-space {
   height: 100%;
   width: 100%;
@@ -71,8 +68,6 @@ img {
   float: right;
   /*height: 45px;*/
   width: auto;
-  position: absolute;
-
 }
 
 .content-body {
@@ -91,8 +86,7 @@ img {
   height: 1000px;
   border-radius: 5px;
   min-width: 300px;
-  max-width: 300px
-
+  max-width: 300px;
 }
 
 #login-button {
@@ -103,7 +97,6 @@ img {
 .city-list-title {
   margin-top: 5%;
   text-align: left;
-
 }
 
 .city-list {
@@ -133,13 +126,13 @@ li {
   border: #6b7a8f;
 }
 
-.close-post-modal-bttn{
+.close-post-modal-bttn {
   background-color: #f7882f;
   border: #6b7a8f;
 }
 
 .del-post {
-    background-color: #95a5a6;
+  background-color: #95a5a6;
 }
 
 .image-splash {
@@ -181,12 +174,10 @@ li {
   padding: 5px;
 }
 
-
 .topnav {
   font-size: 20px;
   text-align: left;
   margin: -10px 0 0 5px;
-
 }
 #profile {
   margin-left: 5px;
@@ -202,22 +193,22 @@ li {
 }
 
 #left-topic {
-padding: 3px;
+  padding: 3px;
   background-color: white;
   width: 25%;
   border-radius: 5px;
 }
 
 #middle-topic {
-	padding: 3px;
-	margin: 0px 5px 5px 40px;
+  padding: 3px;
+  margin: 0px 5px 5px 40px;
   background-color: white;
   width: 25%;
   border-radius: 5px;
 }
 
 #right-topic {
-	padding: 3px;
+  padding: 3px;
   background-color: white;
   margin-left: 40px;
   width: 25%;
@@ -230,9 +221,8 @@ padding: 3px;
   position: absolute;
   z-index: 1000;
   padding: 5px;
-	width: 90%;
-	top: 60%;
+  width: 90%;
+  top: 60%;
   margin: auto;
   left: 5%;
-
 }
