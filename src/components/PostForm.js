@@ -12,8 +12,7 @@ import {
 class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: '', text: '' };
-    this.state = { isOpen: false };
+    this.state = { title: '', text: '', isOpen: false };
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,18 +66,23 @@ class PostForm extends Component {
           </ModalHeader>
           <ModalBody>
             <form>
-              <input
-                type="text"
-                placeholder="title"
-                value={this.state.title}
-                onChange={this.handleTitleChange}
-              />
-              <input
-                type="text"
-                placeholder="text"
-                value={this.state.text}
-                onChange={this.handleTextChange}
-              />
+              <div>
+                <input
+                  type="text"
+                  placeholder="title"
+                  value={this.state.title}
+                  onChange={this.handleTitleChange}
+                />
+              </div>
+              <div>
+                <input
+                  type="textarea"
+                  placeholder="text"
+                  className="formTextArea"
+                  value={this.state.text}
+                  onChange={this.handleTextChange}
+                />
+              </div>
             </form>
           </ModalBody>
           <ModalFooter>

@@ -13,7 +13,7 @@ class CityList extends Component {
   }
 
   loadCityFromServer(){
-    axios.get(this.props.url)
+    axios.get(this.props.citiesUrl)
     .then(res => {
       this.setState({data: res.data.post})
     })
@@ -26,7 +26,7 @@ class CityList extends Component {
       this.setState({data: newCity});
       console.log(this.props.url);
 
-      fetch(this.props.url, {
+      fetch(this.props.citiesUrl, {
       method: 'post',
       body: e})
         .then(res => {
@@ -40,7 +40,7 @@ class CityList extends Component {
   }
 
   handleCityAdd(city) {
-    axios.post('api/cities', {
+    axios.post(this.props.citiesUrl, {
       name: city.name,
       imageURL: city.imageURL,
       description: city.dedscription
@@ -54,13 +54,21 @@ class CityList extends Component {
 }
 
 render() {
+  let cityNodes = this.state.data.map(city => {
+    return <CityListItem
+            name={city.name}
+            description={city.description}
+            id={city['_id']}
+            key={city['_id']} />;
+  });
+
   return(
     <div className="CityList">
-      <div className="city-list-title">
-      <CityListItem />
+      <div className="CityListItem">
+        {cityNodes}
       </div>
       <div className="city-list-add">
-      <CityForm onCitySubmit={this.handleSubmit}/>
+        <CityForm onCitySubmit={this.handleSubmit}/>
       </div>
     </div>
   )

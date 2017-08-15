@@ -9,8 +9,7 @@ class PostBox extends Component {
   constructor(props) {
     super();
     this.state = {
-      data: [],
-      cityId: ''
+      data: []
     };
     this.handlePostDelete = this.handlePostDelete.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
@@ -65,7 +64,6 @@ class PostBox extends Component {
       //     city: {_id:78,name:'jerksVille'}
       //   }
       // ];
-      // this.setState({data:posts_list})
 
     axios.get(`${this.props.citiesPostUrl}${this.props.cityId}`).then(res => {
       console.log(res.data)
@@ -74,18 +72,24 @@ class PostBox extends Component {
   }
 
   handlePostSubmit(e) {
-    console.log(e);
+    //console.log(e);
     let post = this.state.data;
-    e._user = 'fake user data'; //  user_id
-    e._city = 'fake city data;'; // city_id
-    let newPost = post.concat(e);
-    this.setState({ data: newPost });
-    console.log(`POST URL: ${this.props.postUrl}/${e._id}`);
+    //console.log(post)
+    e.userId = this.props.userId; //  user_id
+    e.cityId = this.props.cityId; // city_id
+    //post.concat(e);
+    let newPost = e;
+
+    //this.setState({ data: newPost });
     axios
-      .post(`${this.props.postUrl}/${e._id}`, e)
+      .post(this.props.postUrl,newPost)
       .then(res => {
-        console.log('RES:', res);
-        this.setState({ data: res });
+
+        newPost['_id'] = res.data['_id']
+
+        post.unshift(newPost)
+      this.loadPostsFromServer()  
+
         //handleAddPost(res);
       })
       .catch(err => {
@@ -95,19 +99,23 @@ class PostBox extends Component {
 
   handlePostDelete(id) {
     axios
-      .delete(`${this.props.postUrl}/${id}`)
+      .delete(`${this.props.postUrl}${id}`)
       .then(res => {
         console.log('Post Deleted');
-      })
+        let posts = this.state.data.filter(function(post) {
+          return post._id !== res._id;
+        });
+          this.loadPostsFromServer()
+        })
       .catch(err => {
         console.log(err);
       });
   }
   handlePostUpdate(id, post) {
-    //sends the post id and new author/text to our api
+    //sends the post
     $.ajax({
       method: "put",
-      url: `${this.props.postUrl}/${id}`,
+      url: `${this.props.postUrl}${id}`,
       data: post
     }).then(
       res => {

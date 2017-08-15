@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import UserAuth from "./UserAuth"
 
 //import { browserHistory } from "react-router";
 //import $ from "jquery-ajax";
@@ -31,8 +32,13 @@ class Header extends Component {
         <div className="container">
           <div className="col">
             <h2>Wayfarer</h2>
-          </div>
 
+            <UserAuth
+              handleSubmit={this.props.handleSubmit}
+              loginUrl={this.props.loginUrl}
+              setAuthState={this.setAuthState}
+              />
+            </div>
         </div>
       </div>
     );
