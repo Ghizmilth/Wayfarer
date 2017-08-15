@@ -61,7 +61,7 @@ class Splash extends Component {
 
         <div className="row container splash-login-container">
             <div className="col-md-12 splash-login-form">
-            <form  onSubmit={this.handleSubmit}>
+            <form className="login-form" onSubmit={this.handleSubmit}>
               <Input id="input1" type="text" placeholder="username" value={this.state.username} onChange={this.handleUsernameChange}/>
               <Input id="input2" type="password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
               <Button id="login-button" type="submit" value="login">
@@ -80,7 +80,7 @@ class Splash extends Component {
               <hr></hr>
               <p>Find tips on a wide range of topics, from where to find historical landmarks to names of the best shopping centers.This is a perfectly tailored website for your next adventure.</p>
             </div>
-          
+
             <div id="middle-topic">
               <h3>Destinations</h3>
                 <hr></hr>

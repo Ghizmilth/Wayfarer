@@ -124,7 +124,7 @@ class Main extends Component {
       return (
         <div>
           <p>logged in</p>
-          <div classNamer="col">
+          <div className="col">
             <CityContainer
               isAuthenticated={this.state.isAuthenticated}
               username={this.state.username}
