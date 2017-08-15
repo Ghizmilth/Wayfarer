@@ -124,6 +124,7 @@ class Main extends Component {
       console.log("user is logged in");
       return (
         <div>
+
           <div className="MainPage">
             <nav>
               <article>
@@ -160,6 +161,7 @@ class Main extends Component {
                 </div>
               </div>
             </article>
+
           </div>
 
           <div classNamer="col" />
